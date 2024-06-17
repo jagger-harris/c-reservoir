@@ -1,0 +1,6 @@
+#ifndef GLOBALS_H
+#define GLOBALS_H
+
+#define RSVR_GOLDEN_RATIO 1.618033988749895
+
+#endif /* GLOBALS_H */
