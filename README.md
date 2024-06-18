@@ -13,7 +13,7 @@ Requires git and CMake 3.5 or later to build.
 ## Compiling and Running
 Clone the repository:
 ```shell
-git clone https://github.com/jagger-harris/c-reservoir.git
+git clone https://github.com/jagger-harris/rsvr.git
 cd c-reservoir
 ```
 
@@ -37,7 +37,7 @@ Using testing with build script:
 
 Without build script:
 ```shell
-./test/<test_case>
+./tests/<test_case>
 ```
 
 ## Contributing
