@@ -1,4 +1,4 @@
-#include "../src/containers/rsvr_dynamic_array.h"
+#include "../include/rsvr_containers.h"
 #include <assert.h>
 #include <math.h>
 #include <stdio.h>

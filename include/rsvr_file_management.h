@@ -1,8 +1,18 @@
-#include "rsvr_file_management.h"
+#ifndef RSVR_FILE_MANAGEMENT_H
+#define RSVR_FILE_MANAGEMENT_H
+
 #include <stdio.h>
 #include <stdlib.h>
 
-const char* rsvr_file_load_text_file(const char* file_path) {
+/**** Text files ****/
+static const char* rsvr_file_load_text_file(const char* file_path);
+static void rsvr_file_save_text_file(const char* file_path,
+                                     const char* content);
+
+/**************** Implementations ****************/
+
+/**** Text files ****/
+static const char* rsvr_file_load_text_file(const char* file_path) {
   FILE* file = fopen(file_path, "r");
   long length = 0;
   char* content = "";
@@ -26,7 +36,8 @@ const char* rsvr_file_load_text_file(const char* file_path) {
   return content;
 }
 
-void rsvr_file_save_text_file(const char* file_path, const char* content) {
+static void rsvr_file_save_text_file(const char* file_path,
+                                     const char* content) {
   FILE* file = fopen(file_path, "w");
 
   if (!file) {
@@ -38,3 +49,5 @@ void rsvr_file_save_text_file(const char* file_path, const char* content) {
   fprintf(file, "%s", content);
   fclose(file);
 }
+
+#endif /* RSVR_FILE_MANAGEMENT_H */

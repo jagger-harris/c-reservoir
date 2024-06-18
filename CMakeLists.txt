@@ -12,4 +12,4 @@ file(GLOB_RECURSE HEADER_FILES src/*.h)
 file(GLOB_RECURSE SOURCE_FILES src/*.c)
 
 # Add subdirectory for tests
-add_subdirectory(test)
+add_subdirectory(tests)
