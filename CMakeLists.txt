@@ -5,7 +5,7 @@ project(reservoir C)
 # Project options
 set(CMAKE_C_STANDARD 90)
 set(CMAKE_C_STANDARD_REQUIRED ON)
-set(CMAKE_C_FLAGS "-std=c89 -Wall -Wpedantic -fsanitize=address")
+set(CMAKE_C_FLAGS "-std=c89 -Werror -Wall -Wno-unused-function -fsanitize=address")
 
 # Get all sources
 file(GLOB_RECURSE HEADER_FILES src/*.h)
