@@ -33,7 +33,7 @@ if $test; then
   if [ -d "./build" ]; then
     cd build || exit
     if [ -n "$test_case" ]; then
-      ./test/"$test_case"
+      ./tests/"$test_case"
     else
       test=false
     fi
