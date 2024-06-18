@@ -1,17 +1,25 @@
+/*
+  C Reservoir Library
+  MIT License - https://choosealicense.com/licenses/mit/
+
+  Contributors:
+    Jagger Harris
+*/
+
 #ifndef RSVR_FILE_MANAGEMENT_H
 #define RSVR_FILE_MANAGEMENT_H
 
 #include <stdio.h>
 #include <stdlib.h>
 
-/**** Text files ****/
+/******** Text files ********/
 static const char* rsvr_file_load_text_file(const char* file_path);
 static void rsvr_file_save_text_file(const char* file_path,
                                      const char* content);
 
 /**************** Implementations ****************/
 
-/**** Text files ****/
+/******** Text files ********/
 static const char* rsvr_file_load_text_file(const char* file_path) {
   FILE* file = fopen(file_path, "r");
   long length = 0;
