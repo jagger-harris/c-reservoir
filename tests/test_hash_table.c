@@ -16,33 +16,33 @@ void test_hash_table(void) {
   assert(hash_table.capacity == 2);
 
   /* Test: Insert key-value pairs */
-  strcpy_safe(test_key, "key1", sizeof(test_key));
+  rsvr_strcpy(test_key, "key1", sizeof(test_key));
   test_int = 100;
   rsvr_hash_table_push(&hash_table, test_key, &test_int);
   assert(hash_table.size == 1);
 
-  strcpy_safe(test_key, "key2", sizeof(test_key));
+  rsvr_strcpy(test_key, "key2", sizeof(test_key));
   test_int = 200;
   rsvr_hash_table_push(&hash_table, test_key, &test_int);
   assert(hash_table.size == 2);
 
   /* Test: Retrieve values from hash table */
-  strcpy_safe(test_key, "key1", sizeof(test_key));
+  rsvr_strcpy(test_key, "key1", sizeof(test_key));
   assert((int*)rsvr_hash_table_get(&hash_table, test_key) != NULL);
   assert(*(int*)rsvr_hash_table_get(&hash_table, test_key) == 100);
 
-  strcpy_safe(test_key, "key2", sizeof(test_key));
+  rsvr_strcpy(test_key, "key2", sizeof(test_key));
   assert((int*)rsvr_hash_table_get(&hash_table, test_key) != NULL);
   assert(*(int*)rsvr_hash_table_get(&hash_table, test_key) == 200);
 
   /* Test: Insert with key collision (same hash index) */
-  strcpy_safe(test_key, "key3", sizeof(test_key));
+  rsvr_strcpy(test_key, "key3", sizeof(test_key));
   test_int = 300;
   rsvr_hash_table_push(&hash_table, test_key, &test_int);
   assert(hash_table.size == 3);
 
   /* Test: Remove key from hash table */
-  strcpy_safe(test_key, "key2", sizeof(test_key));
+  rsvr_strcpy(test_key, "key2", sizeof(test_key));
   rsvr_hash_table_pop(&hash_table, test_key);
   assert(hash_table.size == 2);
   assert((int*)rsvr_hash_table_get(&hash_table, test_key) == NULL);
