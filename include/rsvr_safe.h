@@ -11,25 +11,22 @@
 
 #include <string.h>
 
-void strcpy_safe(char* dest, const char* src, size_t dest_size);
+void rsvr_strcpy(char* dest, const char* src, size_t dest_size);
 
 /**************** Implementations ****************/
 
-void strcpy_safe(char* dest, const char* src, size_t dest_size) {
+void rsvr_strcpy(char* dest, const char* src, size_t dest_size) {
+  size_t i;
+  
   if (dest == NULL || src == NULL || dest_size == 0) {
     return; /* Return if parameters are invalid */
   }
 
-  size_t src_len = strlen(src);
-
-  /* Ensure destination buffer has space for null terminator */
-  if (src_len >= dest_size) {
-    return;
+  for (i = 0; i < dest_size - 1 && src[i] != '\0'; i++) {
+    dest[i] = src[i];
   }
 
-  /* Leave space for null terminator */
-  strncpy(dest, src, dest_size - 1);
-  dest[dest_size - 1] = '\0';
+  dest[i] = '\0'; /* Null terminate the destination string */
 }
 
 #endif /* RSVR_SAFE_H */
