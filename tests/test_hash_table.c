@@ -6,7 +6,6 @@
 #include <stdlib.h>
 
 void test_hash_table(void) {
-  /* Declare variables */
   int test_int;
   char test_key[16];
   rsvr_hash_table_t hash_table;
