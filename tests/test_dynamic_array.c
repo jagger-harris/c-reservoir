@@ -1,4 +1,3 @@
-#define RSVR_CONTAINERS_IMPLEMENTATION
 #include "../include/rsvr_containers.h"
 #include <assert.h>
 #include <math.h>
