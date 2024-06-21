@@ -1,5 +1,5 @@
 add_executable(test_dynamic_array test_dynamic_array.c ${SOURCE_FILES})
 add_executable(test_hash_table test_hash_table.c ${SOURCE_FILES})
 add_executable(test_file_management test_file_management.c ${SOURCE_FILES})
-add_executable(test_rsvr_strcpy test_rsvr_strcpy.c ${SOURCE_FILES})
+add_executable(test_rsv_strcpy test_rsv_strcpy.c ${SOURCE_FILES})
 add_executable(test_threads test_threads.c ${SOURCE_FILES})

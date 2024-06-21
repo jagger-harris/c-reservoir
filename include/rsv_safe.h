@@ -6,16 +6,16 @@
     Jagger Harris
 */
 
-#ifndef RSVR_SAFE_H
-#define RSVR_SAFE_H
+#ifndef RSV_SAFE_H
+#define RSV_SAFE_H
 
 #include <string.h>
 
-void rsvr_strcpy(char* dest, const char* src, size_t dest_size);
+void rsv_strcpy(char* dest, const char* src, size_t dest_size);
 
 /**************** Implementations ****************/
 
-void rsvr_strcpy(char* dest, const char* src, size_t dest_size) {
+void rsv_strcpy(char* dest, const char* src, size_t dest_size) {
   size_t i;
   
   if (dest == NULL || src == NULL || dest_size == 0) {
@@ -29,4 +29,4 @@ void rsvr_strcpy(char* dest, const char* src, size_t dest_size) {
   dest[i] = '\0'; /* Null terminate the destination string */
 }
 
-#endif /* RSVR_SAFE_H */
+#endif /* RSV_SAFE_H */

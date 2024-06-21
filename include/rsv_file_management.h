@@ -6,21 +6,21 @@
     Jagger Harris
 */
 
-#ifndef RSVR_FILE_MANAGEMENT_H
-#define RSVR_FILE_MANAGEMENT_H
+#ifndef RSV_FILE_MANAGEMENT_H
+#define RSV_FILE_MANAGEMENT_H
 
 #include <stdio.h>
 #include <stdlib.h>
 
 /******** Text files ********/
-static const char* rsvr_file_load_text_file(const char* file_path);
-static void rsvr_file_save_text_file(const char* file_path,
+static const char* rsv_file_load_text_file(const char* file_path);
+static void rsv_file_save_text_file(const char* file_path,
                                      const char* content);
 
 /**************** Implementations ****************/
 
 /******** Text files ********/
-static const char* rsvr_file_load_text_file(const char* file_path) {
+static const char* rsv_file_load_text_file(const char* file_path) {
   FILE* file = fopen(file_path, "r");
   long length = 0;
   char* content = "";
@@ -44,7 +44,7 @@ static const char* rsvr_file_load_text_file(const char* file_path) {
   return content;
 }
 
-static void rsvr_file_save_text_file(const char* file_path,
+static void rsv_file_save_text_file(const char* file_path,
                                      const char* content) {
   FILE* file = fopen(file_path, "w");
 
@@ -58,4 +58,4 @@ static void rsvr_file_save_text_file(const char* file_path,
   fclose(file);
 }
 
-#endif /* RSVR_FILE_MANAGEMENT_H */
+#endif /* RSV_FILE_MANAGEMENT_H */
