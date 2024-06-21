@@ -1,4 +1,4 @@
-# C-Reservoir - Contributing Guidelines
+# Reservoir C Library - Contributing Guidelines
 Here are the contributing guidelines for our project. We love contributions, whether it is:
 * Reporting a bug
 * Discussing the current state of the code
