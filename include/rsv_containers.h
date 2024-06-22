@@ -25,13 +25,13 @@ typedef struct rsv_dynamic_array_t {
   unsigned int element_size;
 } rsv_dynamic_array_t;
 
-static rsv_dynamic_array_t
-rsv_dynamic_array_create(unsigned int array_size, unsigned int element_size);
+static rsv_dynamic_array_t rsv_dynamic_array_create(unsigned int array_size,
+                                                    unsigned int element_size);
 static void rsv_dynamic_array_destroy(rsv_dynamic_array_t* array);
 static void* rsv_dynamic_array_get(rsv_dynamic_array_t* array,
-                                    unsigned int index);
+                                   unsigned int index);
 static void rsv_dynamic_array_push(rsv_dynamic_array_t* array,
-                                    const void* element);
+                                   const void* element);
 static void rsv_dynamic_array_pop(rsv_dynamic_array_t* array);
 
 /******** Hash table ********/
@@ -39,36 +39,68 @@ static void rsv_dynamic_array_pop(rsv_dynamic_array_t* array);
 #define RSV_HASH_TABLE_LOAD_FACTOR 0.75
 
 typedef struct rsv_hash_table_entry_t {
-  char* key;
+  char* data;
   void* value;
   struct rsv_hash_table_entry_t* next;
 } rsv_hash_table_entry_t;
 
 typedef struct rsv_hash_table_t {
   rsv_hash_table_entry_t** buckets;
-  unsigned int size;
+  unsigned int amount;
   unsigned int capacity;
   unsigned int value_size;
 } rsv_hash_table_t;
 
-static unsigned int rsv_hash_table_hash(const char* key);
-static rsv_hash_table_t rsv_hash_table_create(unsigned int initial_size,
-                                                unsigned int value_size);
+static unsigned int rsv_hash_table_hash(const char* data);
+static rsv_hash_table_t rsv_hash_table_create(unsigned int initial_capacity,
+                                              unsigned int value_size);
 static void rsv_hash_table_destroy(rsv_hash_table_t* hash_table);
 static void rsv_hash_table_resize(rsv_hash_table_t* hash_table,
-                                   unsigned int new_capacity);
-static void* rsv_hash_table_get(rsv_hash_table_t* hash_table,
-                                 const char* key);
-static void rsv_hash_table_push(rsv_hash_table_t* hash_table, const char* key,
-                                 const void* value);
-static void rsv_hash_table_pop(rsv_hash_table_t* hash_table, const char* key);
+                                  unsigned int new_capacity);
+static void* rsv_hash_table_get(rsv_hash_table_t* hash_table, const char* data);
+static void rsv_hash_table_push(rsv_hash_table_t* hash_table, const char* data,
+                                const void* value);
+static void rsv_hash_table_pop(rsv_hash_table_t* hash_table, const char* data);
+
+/******** Hash set ********/
+
+#define RSV_HASH_SET_LOAD_FACTOR 0.75
+
+typedef struct rsv_hash_set_entry_t {
+  void* data;
+  struct rsv_hash_set_entry_t* next;
+} rsv_hash_set_entry_t;
+
+typedef struct rsv_hash_set_t {
+  rsv_hash_set_entry_t** buckets;
+  unsigned int amount;
+  unsigned int capacity;
+  unsigned int data_size;
+  unsigned int (*hash_func)(const void*, unsigned int);
+  int (*compare_func)(const void*, const void*, unsigned int);
+} rsv_hash_set_t;
+
+static unsigned int rsv_hash_set_hash(const void* data, unsigned int data_size);
+static int rsv_hash_set_compare(const void* data_a, const void* data_b,
+                                unsigned int data_size);
+
+static rsv_hash_set_t rsv_hash_set_create(
+    unsigned int initial_capacity, unsigned int data_size,
+    unsigned int (*hash_func)(const void*, unsigned int),
+    int (*compare_func)(const void*, const void*, unsigned int));
+static void rsv_hash_set_destroy(rsv_hash_set_t* hash_set);
+static void rsv_hash_set_resize(rsv_hash_set_t* hash_set,
+                                unsigned int new_capacity);
+static int rsv_hash_set_contains(rsv_hash_set_t* hash_set, const void* data);
+static void rsv_hash_set_add(rsv_hash_set_t* hash_set, const void* data);
+static void rsv_hash_set_remove(rsv_hash_set_t* hash_set, const void* data);
 
 /**************** Implementations ****************/
 
 /******** Dynamic array ********/
 
-static rsv_dynamic_array_t
-rsv_dynamic_array_create(unsigned int array_size, unsigned int element_size) {
+static rsv_dynamic_array_t rsv_dynamic_array_create(unsigned int array_size,
+                                                    unsigned int element_size) {
   rsv_dynamic_array_t array;
 
   array.data = malloc(array_size * element_size);
@@ -88,7 +120,7 @@ static void rsv_dynamic_array_destroy(rsv_dynamic_array_t* array) {
 }
 
 static void* rsv_dynamic_array_get(rsv_dynamic_array_t* array,
-                                    unsigned int index) {
+                                   unsigned int index) {
   if (index >= array->amount) {
     return NULL;
   }
@@ -97,7 +129,7 @@ static void* rsv_dynamic_array_get(rsv_dynamic_array_t* array,
 }
 
 static void rsv_dynamic_array_push(rsv_dynamic_array_t* array,
-                                    const void* element) {
+                                   const void* element) {
   unsigned char* destination;
 
   if (array->amount >= array->capacity) {
@@ -128,24 +160,24 @@ static void rsv_dynamic_array_pop(rsv_dynamic_array_t* array) {
 
 /******** Hash table ********/
 
-static unsigned int rsv_hash_table_hash(const char* key) {
+static unsigned int rsv_hash_table_hash(const char* data) {
   unsigned int hash = 0;
 
-  while (*key) {
-    hash = (hash * 31) + *key++;
+  while (*data) {
+    hash = (hash * 31) + *data++;
   }
 
   return hash;
 }
 
-static rsv_hash_table_t rsv_hash_table_create(unsigned int initial_size,
-                                                unsigned int value_size) {
+static rsv_hash_table_t rsv_hash_table_create(unsigned int initial_capacity,
+                                              unsigned int value_size) {
   rsv_hash_table_t hash_table;
 
   hash_table.buckets = (rsv_hash_table_entry_t**)calloc(
-      initial_size, sizeof(rsv_hash_table_entry_t*));
-  hash_table.size = 0;
-  hash_table.capacity = initial_size;
+      initial_capacity, sizeof(rsv_hash_table_entry_t*));
+  hash_table.amount = 0;
+  hash_table.capacity = initial_capacity;
   hash_table.value_size = value_size;
 
   return hash_table;
@@ -159,7 +191,7 @@ static void rsv_hash_table_destroy(rsv_hash_table_t* hash_table) {
 
     while (entry) {
       rsv_hash_table_entry_t* next = entry->next;
-      free(entry->key);
+      free(entry->data);
       free(entry->value);
       free(entry);
       entry = next;
@@ -168,13 +200,13 @@ static void rsv_hash_table_destroy(rsv_hash_table_t* hash_table) {
 
   free(hash_table->buckets);
   hash_table->buckets = NULL;
-  hash_table->size = 0;
+  hash_table->amount = 0;
   hash_table->capacity = 0;
   hash_table->value_size = 0;
 }
 
 static void rsv_hash_table_resize(rsv_hash_table_t* hash_table,
-                                   unsigned int new_capacity) {
+                                  unsigned int new_capacity) {
   unsigned int i;
   rsv_hash_table_entry_t** new_buckets = (rsv_hash_table_entry_t**)calloc(
       new_capacity, sizeof(rsv_hash_table_entry_t*));
@@ -183,7 +215,7 @@ static void rsv_hash_table_resize(rsv_hash_table_t* hash_table,
     rsv_hash_table_entry_t* entry = hash_table->buckets[i];
     while (entry) {
       rsv_hash_table_entry_t* next = entry->next;
-      unsigned int new_index = rsv_hash_table_hash(entry->key) % new_capacity;
+      unsigned int new_index = rsv_hash_table_hash(entry->data) % new_capacity;
       entry->next = new_buckets[new_index];
       new_buckets[new_index] = entry;
       entry = next;
@@ -195,13 +227,12 @@ static void rsv_hash_table_resize(rsv_hash_table_t* hash_table,
   hash_table->capacity = new_capacity;
 }
 
-static void* rsv_hash_table_get(rsv_hash_table_t* hash_table,
-                                 const char* key) {
-  unsigned int index = rsv_hash_table_hash(key) % hash_table->capacity;
+static void* rsv_hash_table_get(rsv_hash_table_t* hash_table, const char* data) {
+  unsigned int index = rsv_hash_table_hash(data) % hash_table->capacity;
   rsv_hash_table_entry_t* entry = hash_table->buckets[index];
 
   while (entry) {
-    if (strcmp(entry->key, key) == 0) {
+    if (strcmp(entry->data, data) == 0) {
       return entry->value;
     }
 
@@ -210,22 +241,22 @@ static void* rsv_hash_table_get(rsv_hash_table_t* hash_table,
   return NULL;
 }
 
-static void rsv_hash_table_push(rsv_hash_table_t* hash_table, const char* key,
-                                 const void* value) {
+static void rsv_hash_table_push(rsv_hash_table_t* hash_table, const char* data,
+                                const void* value) {
   unsigned int index;
   rsv_hash_table_entry_t* entry;
   rsv_hash_table_entry_t* new_entry;
 
-  if ((float)hash_table->size / hash_table->capacity >
+  if ((float)hash_table->amount / hash_table->capacity >
       RSV_HASH_TABLE_LOAD_FACTOR) {
     rsv_hash_table_resize(hash_table, hash_table->capacity * 2);
   }
 
-  index = rsv_hash_table_hash(key) % hash_table->capacity;
+  index = rsv_hash_table_hash(data) % hash_table->capacity;
   entry = hash_table->buckets[index];
 
   while (entry) {
-    if (strcmp(entry->key, key) == 0) {
+    if (strcmp(entry->data, data) == 0) {
       memcpy(entry->value, value, hash_table->value_size);
       return;
     }
@@ -233,32 +264,186 @@ static void rsv_hash_table_push(rsv_hash_table_t* hash_table, const char* key,
   }
 
   new_entry = (rsv_hash_table_entry_t*)malloc(sizeof(rsv_hash_table_entry_t));
-  new_entry->key = strdup(key);
+  new_entry->data = strdup(data);
   new_entry->value = malloc(hash_table->value_size);
   memcpy(new_entry->value, value, hash_table->value_size);
   new_entry->next = hash_table->buckets[index];
   hash_table->buckets[index] = new_entry;
-  hash_table->size++;
+  hash_table->amount++;
 }
 
-static void rsv_hash_table_pop(rsv_hash_table_t* hash_table,
-                                const char* key) {
-  unsigned int index = rsv_hash_table_hash(key) % hash_table->capacity;
+static void rsv_hash_table_pop(rsv_hash_table_t* hash_table, const char* data) {
+  unsigned int index = rsv_hash_table_hash(data) % hash_table->capacity;
   rsv_hash_table_entry_t* entry = hash_table->buckets[index];
   rsv_hash_table_entry_t* prev = NULL;
 
   while (entry) {
-    if (strcmp(entry->key, key) == 0) {
+    if (strcmp(entry->data, data) == 0) {
       if (prev) {
         prev->next = entry->next;
       } else {
         hash_table->buckets[index] = entry->next;
       }
 
-      free(entry->key);
+      free(entry->data);
       free(entry->value);
       free(entry);
-      hash_table->size--;
+      hash_table->amount--;
+
+      return;
+    }
+
+    prev = entry;
+    entry = entry->next;
+  }
+}
+
+/******** Hash set ********/
+
+static unsigned int rsv_hash_set_hash(const void* data, unsigned int data_size) {
+  const unsigned char* data_key = (const unsigned char*)data;
+  unsigned int hash = 0;
+  unsigned int i;
+
+  for (i = 0; i < data_size; ++i) {
+    hash = (hash * 31) + data_key[i];
+  }
+
+  return hash;
+}
+
+static int rsv_hash_set_compare(const void* data1, const void* data2,
+                                unsigned int data_size) {
+  return memcmp(data1, data2, data_size) == 0;
+}
+
+static rsv_hash_set_t rsv_hash_set_create(
+    unsigned int initial_capacity, unsigned int data_size,
+    unsigned int (*hash_func)(const void*, unsigned int),
+    int (*compare_func)(const void*, const void*, unsigned int)) {
+  rsv_hash_set_t hash_set;
+
+  hash_set.buckets = (rsv_hash_set_entry_t**)calloc(
+      initial_capacity, sizeof(rsv_hash_set_entry_t*));
+  hash_set.amount = 0;
+  hash_set.capacity = initial_capacity;
+  hash_set.data_size = data_size;
+
+  if (hash_func == NULL) {
+    hash_func = rsv_hash_set_hash;
+  }
+  if (compare_func == NULL) {
+    compare_func = rsv_hash_set_compare;
+  }
+
+  hash_set.hash_func = hash_func;
+  hash_set.compare_func = compare_func;
+
+  return hash_set;
+}
+
+static void rsv_hash_set_destroy(rsv_hash_set_t* hash_set) {
+  unsigned int i;
+
+  for (i = 0; i < hash_set->capacity; ++i) {
+    rsv_hash_set_entry_t* entry = hash_set->buckets[i];
+
+    while (entry) {
+      rsv_hash_set_entry_t* next = entry->next;
+      free(entry->data);
+      free(entry);
+      entry = next;
+    }
+  }
+
+  free(hash_set->buckets);
+  hash_set->buckets = NULL;
+  hash_set->amount = 0;
+  hash_set->capacity = 0;
+}
+
+static void rsv_hash_set_resize(rsv_hash_set_t* hash_set,
+                                unsigned int new_capacity) {
+  unsigned int i;
+  rsv_hash_set_entry_t** new_buckets = (rsv_hash_set_entry_t**)calloc(
+      new_capacity, sizeof(rsv_hash_set_entry_t*));
+
+  for (i = 0; i < hash_set->capacity; ++i) {
+    rsv_hash_set_entry_t* entry = hash_set->buckets[i];
+    while (entry) {
+      rsv_hash_set_entry_t* next = entry->next;
+      unsigned int new_index =
+          hash_set->hash_func(entry->data, hash_set->data_size) % new_capacity;
+      entry->next = new_buckets[new_index];
+      new_buckets[new_index] = entry;
+      entry = next;
+    }
+  }
+
+  free(hash_set->buckets);
+  hash_set->buckets = new_buckets;
+  hash_set->capacity = new_capacity;
+}
+
+static int rsv_hash_set_contains(rsv_hash_set_t* hash_set, const void* data) {
+  unsigned int index =
+      hash_set->hash_func(data, hash_set->data_size) % hash_set->capacity;
+  rsv_hash_set_entry_t* entry = hash_set->buckets[index];
+
+  while (entry) {
+    if (hash_set->compare_func(entry->data, data, hash_set->data_size)) {
+      return 1;
+    }
+
+    entry = entry->next;
+  }
+  return 0;
+}
+
+static void rsv_hash_set_add(rsv_hash_set_t* hash_set, const void* data) {
+  unsigned int index;
+  rsv_hash_set_entry_t* entry;
+  rsv_hash_set_entry_t* new_entry;
+
+  if ((float)hash_set->amount / hash_set->capacity > RSV_HASH_SET_LOAD_FACTOR) {
+    rsv_hash_set_resize(hash_set, hash_set->capacity * 2);
+  }
+
+  index = hash_set->hash_func(data, hash_set->data_size) % hash_set->capacity;
+  entry = hash_set->buckets[index];
+
+  while (entry) {
+    if (hash_set->compare_func(entry->data, data, hash_set->data_size)) {
+      return;
+    }
+    entry = entry->next;
+  }
+
+  new_entry = (rsv_hash_set_entry_t*)malloc(sizeof(rsv_hash_set_entry_t));
+  new_entry->data = malloc(hash_set->data_size);
+  memcpy(new_entry->data, data, hash_set->data_size);
+  new_entry->next = hash_set->buckets[index];
+  hash_set->buckets[index] = new_entry;
+  hash_set->amount++;
+}
+
+static void rsv_hash_set_remove(rsv_hash_set_t* hash_set, const void* data) {
+  unsigned int index =
+      hash_set->hash_func(data, hash_set->data_size) % hash_set->capacity;
+  rsv_hash_set_entry_t* entry = hash_set->buckets[index];
+  rsv_hash_set_entry_t* prev = NULL;
+
+  while (entry) {
+    if (hash_set->compare_func(entry->data, data, hash_set->data_size)) {
+      if (prev) {
+        prev->next = entry->next;
+      } else {
+        hash_set->buckets[index] = entry->next;
+      }
+
+      free(entry->data);
+      free(entry);
+      hash_set->amount--;
 
       return;
     }
