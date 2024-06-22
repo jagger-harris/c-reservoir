@@ -6,9 +6,10 @@
 
 void test_dynamic_array(void) {
   int test_int;
-  rsv_dynamic_array_t array = rsv_dynamic_array_create(2, sizeof(int));
+  rsv_dynamic_array_t array;
 
   /* Test: Create array */
+  array = rsv_dynamic_array_create(2, sizeof(int));
   assert(array.amount == 0);
   assert(array.capacity == 2);
 
