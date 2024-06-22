@@ -1,4 +1,3 @@
-#define RSVR_CONTAINERS_IMPLEMENTATION
 #include "../include/rsv_containers.h"
 #include "../include/rsv_safe.h"
 #include <assert.h>
