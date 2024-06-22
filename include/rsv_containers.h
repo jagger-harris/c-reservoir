@@ -57,7 +57,6 @@ static rsv_hash_table_t rsv_hash_table_create(unsigned int initial_size,
 static void rsv_hash_table_destroy(rsv_hash_table_t* hash_table);
 static void rsv_hash_table_resize(rsv_hash_table_t* hash_table,
                                    unsigned int new_capacity);
-
 static void* rsv_hash_table_get(rsv_hash_table_t* hash_table,
                                  const char* key);
 static void rsv_hash_table_push(rsv_hash_table_t* hash_table, const char* key,
