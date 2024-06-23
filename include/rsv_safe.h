@@ -1,4 +1,7 @@
 /*
+  rsv_safe.h
+  Contains safe variants of C std functions
+
   C Reservoir Library
   MIT License - https://choosealicense.com/licenses/mit/
 

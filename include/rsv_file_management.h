@@ -1,4 +1,7 @@
 /*
+  rsv_file_management.h
+  Contains file management functions
+
   C Reservoir Library
   MIT License - https://choosealicense.com/licenses/mit/
 

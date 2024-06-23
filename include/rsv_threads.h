@@ -1,4 +1,7 @@
 /*
+  rsv_threads.h
+  Contains wrappers for threads api
+
   C Reservoir Library
   MIT License - https://choosealicense.com/licenses/mit/
 

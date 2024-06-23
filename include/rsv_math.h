@@ -1,4 +1,7 @@
 /*
+  rsv_math.h
+  Contains math related definitions
+
   C Reservoir Library
   MIT License - https://choosealicense.com/licenses/mit/
 
