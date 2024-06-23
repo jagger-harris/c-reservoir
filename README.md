@@ -6,6 +6,9 @@ It is currently a work-in-progress.
 
 Requires git and CMake 3.5 or later to build.
 
+## Documentation
+You can read the documentation [here](docs/html/index.html).
+
 ## Dependencies
 * CMake 3.5 or greater
 * C89 compiler

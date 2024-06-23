@@ -28,13 +28,47 @@ typedef struct rsv_dynamic_array_t {
   unsigned int element_size;
 } rsv_dynamic_array_t;
 
+/**
+ * @brief Creates a dynamic array
+ *
+ * @param capacity Initial capacity of the array
+ * @param element_size Size of each element in the array
+ * @return A rsv_dynamic_array_t struct representing the created dynamic array
+ */
 static rsv_dynamic_array_t rsv_dynamic_array_create(unsigned int capacity,
                                                     unsigned int element_size);
+
+/**
+ * @brief Destroys a dynamic array, freeing all associated memory
+ *
+ * @param array Pointer to the dynamic array to destroy
+ */
 static void rsv_dynamic_array_destroy(rsv_dynamic_array_t* array);
+
+/**
+ * @brief Gets the element at the specified index in the dynamic array
+ *
+ * @param array Pointer to the dynamic array
+ * @param index Index of the element to retrieve
+ * @return Pointer to the element at the specified index
+ */
 static void* rsv_dynamic_array_get(rsv_dynamic_array_t* array,
                                    unsigned int index);
+
+/**
+ * @brief Adds an element to the end of the dynamic array
+ *
+ * @param array Pointer to the dynamic array
+ * @param element Pointer to the element to add
+ */
 static void rsv_dynamic_array_push(rsv_dynamic_array_t* array,
                                    const void* element);
+
+/**
+ * @brief Removes the last element from the dynamic array
+ *
+ * @param array Pointer to the dynamic array
+ */
 static void rsv_dynamic_array_pop(rsv_dynamic_array_t* array);
 
 /******** Hash table ********/
@@ -57,22 +91,88 @@ typedef struct rsv_hash_table_t {
   int (*custom_compare_func)(const void*, const void*, unsigned int);
 } rsv_hash_table_t;
 
+/**
+ * @brief Generates a hash for the given data
+ *
+ * @param data Pointer to the data to hash
+ * @param data_size Size of the data in bytes
+ * @return The generated hash value
+ */
 static unsigned int rsv_hash_table_hash(const void* data,
                                         unsigned int data_size);
+
+/**
+ * @brief Compares two pieces of data
+ *
+ * @param data1 Pointer to the first data
+ * @param data2 Pointer to the second data
+ * @param data_size Size of the data in bytes
+ * @return 1 if the data are equal, 0 otherwise
+ */
 static int rsv_hash_table_compare(const void* data1, const void* data2,
                                   unsigned int data_size);
+
+/**
+ * @brief Creates a hash table
+ *
+ * @param capacity Initial capacity of the hash table
+ * @param key_size Size of each key in bytes
+ * @param value_size Size of each value in bytes
+ * @param custom_hash_func Pointer to a custom hash function, or NULL to use the
+ * default
+ * @param custom_compare_func Pointer to a custom compare function, or NULL to
+ * use the default
+ * @return A rsv_hash_table_t struct representing the created hash table
+ */
 static rsv_hash_table_t rsv_hash_table_create(
     unsigned int capacity, unsigned int key_size, unsigned int value_size,
     unsigned int (*custom_hash_func)(const void*, unsigned int),
     int (*custom_compare_func)(const void*, const void*, unsigned int));
+
+/**
+ * @brief Destroys a hash table, freeing all associated memory
+ *
+ * @param hash_table Pointer to the hash table to destroy
+ */
 static void rsv_hash_table_destroy(rsv_hash_table_t* hash_table);
+
+/**
+ * @brief Resizes a hash table to the new specified capacity
+ *
+ * @param hash_table Pointer to the hash table to resize
+ * @param new_capacity The new capacity for the hash table
+ */
 static void rsv_hash_table_resize(rsv_hash_table_t* hash_table,
                                   unsigned int new_capacity);
+
+/**
+ * @brief Retrieves the value associated with the specified key in the hash
+ * table
+ *
+ * @param hash_table Pointer to the hash table
+ * @param key Pointer to the key
+ * @return Pointer to the value associated with the key, or NULL if the key is
+ * not found
+ */
 static void* rsv_hash_table_get(rsv_hash_table_t* hash_table, const void* key);
+
+/**
+ * @brief Adds a key-value pair to the hash table
+ *
+ * @param hash_table Pointer to the hash table
+ * @param key Pointer to the key
+ * @param value Pointer to the value
+ */
 static void rsv_hash_table_push(rsv_hash_table_t* hash_table, const void* key,
-                               const void* value);
-static void rsv_hash_table_pop(rsv_hash_table_t* hash_table,
-                                  const void* key);
+                                const void* value);
+
+/**
+ * @brief Removes a key-value pair from the hash table
+ *
+ * @param hash_table Pointer to the hash table
+ * @param key Pointer to the key of the pair to remove
+ */
+static void rsv_hash_table_pop(rsv_hash_table_t* hash_table, const void* key);
 
 /******** Hash set ********/
 
@@ -92,18 +192,81 @@ typedef struct rsv_hash_set_t {
   int (*custom_compare_func)(const void*, const void*, unsigned int);
 } rsv_hash_set_t;
 
+/**
+ * @brief Generates a hash for the given data
+ *
+ * @param data Pointer to the data to hash
+ * @param data_size Size of the data in bytes
+ * @return The generated hash value
+ */
 static unsigned int rsv_hash_set_hash(const void* data, unsigned int data_size);
+
+/**
+ * @brief Compares two pieces of data
+ *
+ * @param data_a Pointer to the first data
+ * @param data_b Pointer to the second data
+ * @param data_size Size of the data in bytes
+ * @return 1 if the data are equal, 0 otherwise
+ */
 static int rsv_hash_set_compare(const void* data_a, const void* data_b,
                                 unsigned int data_size);
+
+/**
+ * @brief Creates a hash set.
+ *
+ * @param capacity Initial capacity of the hash set
+ * @param data_size Size of each element in the hash set
+ * @param custom_hash_func Pointer to a custom hash function, or NULL to use the
+ * default
+ * @param custom_compare_func Pointer to a custom compare function, or NULL to
+ * use the default
+ * @return A rsv_hash_set_t struct representing the created hash set
+ */
 static rsv_hash_set_t rsv_hash_set_create(
     unsigned int capacity, unsigned int data_size,
     unsigned int (*custom_hash_func)(const void*, unsigned int),
     int (*custom_compare_func)(const void*, const void*, unsigned int));
+
+/**
+ * @brief Destroys a hash set, freeing all associated memory
+ *
+ * @param hash_set Pointer to the hash set to destroy
+ */
 static void rsv_hash_set_destroy(rsv_hash_set_t* hash_set);
+
+/**
+ * @brief Resizes a hash set to the new specified capacity
+ *
+ * @param hash_set Pointer to the hash set to resize
+ * @param new_capacity The new capacity for the hash set
+ */
 static void rsv_hash_set_resize(rsv_hash_set_t* hash_set,
                                 unsigned int new_capacity);
+
+/**
+ * @brief Checks if the hash set contains the specified data
+ *
+ * @param hash_set Pointer to the hash set
+ * @param data Pointer to the data to check for
+ * @return 1 if the data is in the hash set, 0 otherwise
+ */
 static int rsv_hash_set_contains(rsv_hash_set_t* hash_set, const void* data);
+
+/**
+ * @brief Adds an element to the hash set
+ *
+ * @param hash_set Pointer to the hash set
+ * @param data Pointer to the data to add
+ */
 static void rsv_hash_set_push(rsv_hash_set_t* hash_set, const void* data);
+
+/**
+ * @brief Removes an element from the hash set
+ *
+ * @param hash_set Pointer to the hash set
+ * @param data Pointer to the data to remove
+ */
 static void rsv_hash_set_pop(rsv_hash_set_t* hash_set, const void* data);
 
 /**************** Implementations ****************/
@@ -277,7 +440,7 @@ static void* rsv_hash_table_get(rsv_hash_table_t* hash_table, const void* key) {
 }
 
 static void rsv_hash_table_push(rsv_hash_table_t* hash_table, const void* key,
-                               const void* value) {
+                                const void* value) {
   unsigned int index;
   rsv_hash_table_entry_t* entry;
   rsv_hash_table_entry_t* new_entry;
@@ -310,8 +473,7 @@ static void rsv_hash_table_push(rsv_hash_table_t* hash_table, const void* key,
   hash_table->amount++;
 }
 
-static void rsv_hash_table_pop(rsv_hash_table_t* hash_table,
-                                  const void* key) {
+static void rsv_hash_table_pop(rsv_hash_table_t* hash_table, const void* key) {
   unsigned int index = hash_table->custom_hash_func(key, hash_table->key_size) %
                        hash_table->capacity;
   rsv_hash_table_entry_t* entry = hash_table->buckets[index];

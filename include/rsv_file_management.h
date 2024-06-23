@@ -16,9 +16,29 @@
 #include <stdlib.h>
 
 /******** Text files ********/
+
+/**
+ * @brief Loads the content of a text file
+ *
+ * This function reads the entire content of a text file specified by the file
+ * path
+ *
+ * @param file_path The path to the text file to be loaded
+ * @return A pointer to the content of the text file as a string, or NULL if an
+ * error occurs The caller is responsible for freeing the returned string
+ */
 static const char* rsv_file_load_text_file(const char* file_path);
-static void rsv_file_save_text_file(const char* file_path,
-                                     const char* content);
+
+/**
+ * @brief Saves content to a text file.
+ *
+ * This function writes the specified content to a text file specified by the
+ * file path If the file already exists, its content will be replaced
+ *
+ * @param file_path The path to the text file where the content will be saved
+ * @param content The content to be written to the text file
+ */
+static void rsv_file_save_text_file(const char* file_path, const char* content);
 
 /**************** Implementations ****************/
 
@@ -48,7 +68,7 @@ static const char* rsv_file_load_text_file(const char* file_path) {
 }
 
 static void rsv_file_save_text_file(const char* file_path,
-                                     const char* content) {
+                                    const char* content) {
   FILE* file = fopen(file_path, "w");
 
   if (!file) {
