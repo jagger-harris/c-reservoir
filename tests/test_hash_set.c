@@ -17,12 +17,12 @@ void test_hash_set(void) {
   /* Test: Insert keys */
   test_int = 100;
   test_key = &test_int;
-  rsv_hash_set_add(&hash_set, test_key);
+  rsv_hash_set_push(&hash_set, test_key);
   assert(hash_set.amount == 1);
 
   test_int = 200;
   test_key = &test_int;
-  rsv_hash_set_add(&hash_set, test_key);
+  rsv_hash_set_push(&hash_set, test_key);
   assert(hash_set.amount == 2);
 
   /* Test: Check keys presence */
@@ -41,20 +41,20 @@ void test_hash_set(void) {
   /* Test: Insert with key collision (same hash index) */
   test_int = 300;
   test_key = &test_int;
-  rsv_hash_set_add(&hash_set, test_key);
+  rsv_hash_set_push(&hash_set, test_key);
   assert(hash_set.amount == 3);
   assert(rsv_hash_set_contains(&hash_set, test_key) == 1);
 
   /* Test: Remove keys from hash set */
   test_int = 200;
   test_key = &test_int;
-  rsv_hash_set_remove(&hash_set, test_key);
+  rsv_hash_set_pop(&hash_set, test_key);
   assert(hash_set.amount == 2);
   assert(rsv_hash_set_contains(&hash_set, test_key) == 0);
 
   test_int = 100;
   test_key = &test_int;
-  rsv_hash_set_remove(&hash_set, test_key);
+  rsv_hash_set_pop(&hash_set, test_key);
   assert(hash_set.amount == 1);
   assert(rsv_hash_set_contains(&hash_set, test_key) == 0);
 

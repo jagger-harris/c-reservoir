@@ -10,7 +10,7 @@ void test_hash_table(void) {
   rsv_hash_table_t hash_table;
 
   /* Test: Create hash table */
-  hash_table = rsv_hash_table_create(2, sizeof(int));
+  hash_table = rsv_hash_table_create(2, sizeof(test_key), sizeof(int), NULL, NULL);
   assert(hash_table.amount == 0);
   assert(hash_table.capacity == 2);
 
