@@ -1,3 +1,11 @@
+/*
+  C Reservoir Library
+  MIT License - https://choosealicense.com/licenses/mit/
+
+  Contributors:
+    Jagger Harris
+*/
+
 #ifndef RSV_THREADS_H
 #define RSV_THREADS_H
 
