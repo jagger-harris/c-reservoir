@@ -7,7 +7,7 @@ It is currently a work-in-progress.
 Requires git and CMake 3.5 or later to build.
 
 ## Documentation
-You can read the documentation [here](docs/html/index.html).
+You can read the documentation [here](https://jagger-harris.github.io/reservoir/).
 
 ## Dependencies
 * CMake 3.5 or greater
