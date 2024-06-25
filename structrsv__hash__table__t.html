@@ -11,6 +11,8 @@
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -50,17 +52,29 @@ $(function() { codefold.init(0); });
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Search',false);
+  initMenu('',true,false,'search.php','Search',true);
   $(function() { init_search(); });
 });
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){ initResizable(false); });
+$(function(){initNavTree('structrsv__hash__table__t.html',''); initResizable(true); });
 /* @license-end */
 </script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -82,8 +96,6 @@ $(function(){ initResizable(false); });
 </div>
 </div>
 
-</div><!-- top -->
-<div id="doc-content">
 <div class="header">
   <div class="summary">
 <a href="#pub-attribs">Public Attributes</a> &#124;
@@ -92,26 +104,38 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
+<p>A hash table which automatically resizes and can take any type. Make sure to cast your type from the void pointer.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="rsv__containers_8h_source.html">rsv_containers.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a233e93b843aedaf834c26798b2ae913e" id="r_a233e93b843aedaf834c26798b2ae913e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structrsv__hash__table__entry__t.html">rsv_hash_table_entry_t</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a233e93b843aedaf834c26798b2ae913e">buckets</a></td></tr>
-<tr class="separator:a233e93b843aedaf834c26798b2ae913e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19e803f51d7dfb154097281f4949480e" id="r_a19e803f51d7dfb154097281f4949480e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structrsv__hash__table__entry__t.html">rsv_hash_table_entry_t</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19e803f51d7dfb154097281f4949480e">data</a></td></tr>
+<tr class="memdesc:a19e803f51d7dfb154097281f4949480e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The hash table data. Use this to access data from within the hash table.  <br /></td></tr>
+<tr class="separator:a19e803f51d7dfb154097281f4949480e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a131632d4fd2804a43e623167e7aad635" id="r_a131632d4fd2804a43e623167e7aad635"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a131632d4fd2804a43e623167e7aad635">amount</a></td></tr>
+<tr class="memdesc:a131632d4fd2804a43e623167e7aad635"><td class="mdescLeft">&#160;</td><td class="mdescRight">The amount of hash table entries in the hash table.  <br /></td></tr>
 <tr class="separator:a131632d4fd2804a43e623167e7aad635"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20473a2bd03778faaa673265eb5dfda2" id="r_a20473a2bd03778faaa673265eb5dfda2"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20473a2bd03778faaa673265eb5dfda2">capacity</a></td></tr>
+<tr class="memdesc:a20473a2bd03778faaa673265eb5dfda2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The amount of hash table entries that can be stored.  <br /></td></tr>
 <tr class="separator:a20473a2bd03778faaa673265eb5dfda2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb1514a8d53d6ee2752c20d1ac84a8cf" id="r_aeb1514a8d53d6ee2752c20d1ac84a8cf"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb1514a8d53d6ee2752c20d1ac84a8cf">key_size</a></td></tr>
+<tr class="memdesc:aeb1514a8d53d6ee2752c20d1ac84a8cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">The size of the key in memory.  <br /></td></tr>
 <tr class="separator:aeb1514a8d53d6ee2752c20d1ac84a8cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a690f1f4fd70eb9ada601da0ffa6ecc44" id="r_a690f1f4fd70eb9ada601da0ffa6ecc44"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a690f1f4fd70eb9ada601da0ffa6ecc44">value_size</a></td></tr>
+<tr class="memdesc:a690f1f4fd70eb9ada601da0ffa6ecc44"><td class="mdescLeft">&#160;</td><td class="mdescRight">The size of the value in memory.  <br /></td></tr>
 <tr class="separator:a690f1f4fd70eb9ada601da0ffa6ecc44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad57e7d31a0a76f965a25918470541fde" id="r_ad57e7d31a0a76f965a25918470541fde"><td class="memItemLeft" align="right" valign="top">unsigned int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad57e7d31a0a76f965a25918470541fde">custom_hash_func</a> )(const void *, unsigned int)</td></tr>
+<tr class="memdesc:ad57e7d31a0a76f965a25918470541fde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use if the hash table would need a custom hash function. Set to NULL for default hashing.  <br /></td></tr>
 <tr class="separator:ad57e7d31a0a76f965a25918470541fde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a398dd97a15423b0ff79263dd298f9625" id="r_a398dd97a15423b0ff79263dd298f9625"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a398dd97a15423b0ff79263dd298f9625">custom_compare_func</a> )(const void *, const void *, unsigned int)</td></tr>
+<tr class="memdesc:a398dd97a15423b0ff79263dd298f9625"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use if the hash table would need a custom comparing function for comparing values inside the table. Set to NULL for default comparing.  <br /></td></tr>
 <tr class="separator:a398dd97a15423b0ff79263dd298f9625"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Data Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A hash table which automatically resizes and can take any type. Make sure to cast your type from the void pointer. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a131632d4fd2804a43e623167e7aad635" name="a131632d4fd2804a43e623167e7aad635"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a131632d4fd2804a43e623167e7aad635">&#9670;&#160;</a></span>amount</h2>
 
@@ -124,19 +148,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="a233e93b843aedaf834c26798b2ae913e" name="a233e93b843aedaf834c26798b2ae913e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a233e93b843aedaf834c26798b2ae913e">&#9670;&#160;</a></span>buckets</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structrsv__hash__table__entry__t.html">rsv_hash_table_entry_t</a>** rsv_hash_table_t::buckets</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>The amount of hash table entries in the hash table. </p>
 
 </div>
 </div>
@@ -152,6 +164,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>The amount of hash table entries that can be stored. </p>
+
 </div>
 </div>
 <a id="a398dd97a15423b0ff79263dd298f9625" name="a398dd97a15423b0ff79263dd298f9625"></a>
@@ -165,6 +179,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Use if the hash table would need a custom comparing function for comparing values inside the table. Set to NULL for default comparing. </p>
 
 </div>
 </div>
@@ -180,6 +196,24 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Use if the hash table would need a custom hash function. Set to NULL for default hashing. </p>
+
+</div>
+</div>
+<a id="a19e803f51d7dfb154097281f4949480e" name="a19e803f51d7dfb154097281f4949480e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19e803f51d7dfb154097281f4949480e">&#9670;&#160;</a></span>data</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structrsv__hash__table__entry__t.html">rsv_hash_table_entry_t</a>** rsv_hash_table_t::data</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The hash table data. Use this to access data from within the hash table. </p>
+
 </div>
 </div>
 <a id="aeb1514a8d53d6ee2752c20d1ac84a8cf" name="aeb1514a8d53d6ee2752c20d1ac84a8cf"></a>
@@ -193,6 +227,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>The size of the key in memory. </p>
 
 </div>
 </div>
@@ -208,16 +244,21 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>The size of the value in memory. </p>
+
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/<a class="el" href="rsv__containers_8h_source.html">rsv_containers.h</a></li>
 </ul>
 </div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
-</small></address>
 </div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="structrsv__hash__table__t.html">rsv_hash_table_t</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
 </body>
 </html>

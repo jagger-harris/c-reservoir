@@ -11,6 +11,8 @@
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -50,19 +52,29 @@ $(function() { codefold.init(0); });
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Search',false);
+  initMenu('',true,false,'search.php','Search',true);
   $(function() { init_search(); });
 });
 /* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
-<div id="doc-content">
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){ initResizable(false); });
+$(function(){initNavTree('globals_func.html',''); initResizable(true); });
 /* @license-end */
 </script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -86,19 +98,44 @@ $(function(){ initResizable(false); });
 
 <div class="contents">
 <div class="textblock">Here is a list of all functions with links to the files they belong to:</div><ul>
-<li>rsv_mutex_create()&#160;:&#160;<a class="el" href="rsv__threads_8h.html#a34129606a8e290118c5f1160244d4c44">rsv_threads.h</a></li>
-<li>rsv_mutex_destroy()&#160;:&#160;<a class="el" href="rsv__threads_8h.html#a618b02c40b0301cea49751f16f5e2471">rsv_threads.h</a></li>
-<li>rsv_mutex_lock()&#160;:&#160;<a class="el" href="rsv__threads_8h.html#a0ecc22a5634e182bb9c44cf02d8aaba9">rsv_threads.h</a></li>
-<li>rsv_mutex_unlock()&#160;:&#160;<a class="el" href="rsv__threads_8h.html#ac1e8a4b72171a3920b8fe02cdbe1eade">rsv_threads.h</a></li>
-<li>rsv_strcpy()&#160;:&#160;<a class="el" href="rsv__safe_8h.html#a9466286eaafdf2cabcafed9bb006029c">rsv_safe.h</a></li>
-<li>rsv_thread_create()&#160;:&#160;<a class="el" href="rsv__threads_8h.html#ad4512c18b216b373003f544e0c771314">rsv_threads.h</a></li>
-<li>rsv_thread_join()&#160;:&#160;<a class="el" href="rsv__threads_8h.html#a38260dc3f2cae1e263c132df41861fb6">rsv_threads.h</a></li>
+<li>rsv_dynamic_array_create()&#160;:&#160;<a class="el" href="rsv__containers_8h.html#a4f6d300327e274c9d69ca55dab91507c">rsv_containers.h</a></li>
+<li>rsv_dynamic_array_destroy()&#160;:&#160;<a class="el" href="rsv__containers_8h.html#a0cc4f9d4abc10fdcf2ef75178ec08d5b">rsv_containers.h</a></li>
+<li>rsv_dynamic_array_get()&#160;:&#160;<a class="el" href="rsv__containers_8h.html#a0b17a741d97390644b6a19f21a983066">rsv_containers.h</a></li>
+<li>rsv_dynamic_array_pop()&#160;:&#160;<a class="el" href="rsv__containers_8h.html#a82259ac8a99c65bc798486a0fb89bf8f">rsv_containers.h</a></li>
+<li>rsv_dynamic_array_push()&#160;:&#160;<a class="el" href="rsv__containers_8h.html#a64b9468dc7cbc725941c8983d83ee138">rsv_containers.h</a></li>
+<li>rsv_file_load_text_file()&#160;:&#160;<a class="el" href="rsv__file__management_8h.html#a5aa69d1802579a328e8de7173c560e24">rsv_file_management.h</a></li>
+<li>rsv_file_save_text_file()&#160;:&#160;<a class="el" href="rsv__file__management_8h.html#a1bc86fde06a57d97b46f6d7c01b13905">rsv_file_management.h</a></li>
+<li>rsv_hash_set_compare()&#160;:&#160;<a class="el" href="rsv__containers_8h.html#adbe510860907a8dbe2cc6297c717dbfe">rsv_containers.h</a></li>
+<li>rsv_hash_set_contains()&#160;:&#160;<a class="el" href="rsv__containers_8h.html#aaf624c02bb9e01df7c0b8c4b012b8e7c">rsv_containers.h</a></li>
+<li>rsv_hash_set_create()&#160;:&#160;<a class="el" href="rsv__containers_8h.html#aa6a7636135d7e4a5b44a4d2ae1a8e79f">rsv_containers.h</a></li>
+<li>rsv_hash_set_destroy()&#160;:&#160;<a class="el" href="rsv__containers_8h.html#a3745d7b9ede5f4e441398695afca30b6">rsv_containers.h</a></li>
+<li>rsv_hash_set_hash()&#160;:&#160;<a class="el" href="rsv__containers_8h.html#a9e5f06f9f1b4e070ed2007b5e6ddb698">rsv_containers.h</a></li>
+<li>rsv_hash_set_pop()&#160;:&#160;<a class="el" href="rsv__containers_8h.html#af000e256cc73f93be6a8f8a8b031df02">rsv_containers.h</a></li>
+<li>rsv_hash_set_push()&#160;:&#160;<a class="el" href="rsv__containers_8h.html#a0a378207c9e2507528a97982fcc9f3a2">rsv_containers.h</a></li>
+<li>rsv_hash_set_resize()&#160;:&#160;<a class="el" href="rsv__containers_8h.html#a9b20ee1fa0a3d8361d4578839d8939b4">rsv_containers.h</a></li>
+<li>rsv_hash_table_compare()&#160;:&#160;<a class="el" href="rsv__containers_8h.html#adff0c43c10becb87fb9d9a607db90989">rsv_containers.h</a></li>
+<li>rsv_hash_table_create()&#160;:&#160;<a class="el" href="rsv__containers_8h.html#a2dad6979d3c5ebb024bdba85dd5a31e6">rsv_containers.h</a></li>
+<li>rsv_hash_table_destroy()&#160;:&#160;<a class="el" href="rsv__containers_8h.html#a36b15e55a4a86ad3abafa9b34c3b7a33">rsv_containers.h</a></li>
+<li>rsv_hash_table_get()&#160;:&#160;<a class="el" href="rsv__containers_8h.html#a439314a7cf239ab9ceea86f79af6dfa9">rsv_containers.h</a></li>
+<li>rsv_hash_table_hash()&#160;:&#160;<a class="el" href="rsv__containers_8h.html#a972a29a7aba395b52c848c6fb009557d">rsv_containers.h</a></li>
+<li>rsv_hash_table_pop()&#160;:&#160;<a class="el" href="rsv__containers_8h.html#a6b78bd30f3630810fa693d7b286388a7">rsv_containers.h</a></li>
+<li>rsv_hash_table_push()&#160;:&#160;<a class="el" href="rsv__containers_8h.html#a1b9c8a8d2a7fb55d923c9d593aba6433">rsv_containers.h</a></li>
+<li>rsv_hash_table_resize()&#160;:&#160;<a class="el" href="rsv__containers_8h.html#ab88cf901387cf87b6a8b807ce1dad172">rsv_containers.h</a></li>
+<li>rsv_mutex_create()&#160;:&#160;<a class="el" href="rsv__threads_8h.html#a63b21b4de97dd2580100f16631751617">rsv_threads.h</a></li>
+<li>rsv_mutex_destroy()&#160;:&#160;<a class="el" href="rsv__threads_8h.html#abfce9161aa6af69bc7a29c04894818aa">rsv_threads.h</a></li>
+<li>rsv_mutex_lock()&#160;:&#160;<a class="el" href="rsv__threads_8h.html#afe2d288f6d0a6f4a941f61a5d9e8e7d0">rsv_threads.h</a></li>
+<li>rsv_mutex_unlock()&#160;:&#160;<a class="el" href="rsv__threads_8h.html#a49d53a36c84763f5a0bf9b6e3d4ad011">rsv_threads.h</a></li>
+<li>rsv_strcpy()&#160;:&#160;<a class="el" href="rsv__safe_8h.html#a09911a1256f26eb2a99c0039be5ed5b8">rsv_safe.h</a></li>
+<li>rsv_thread_create()&#160;:&#160;<a class="el" href="rsv__threads_8h.html#acfd3b02608965825c1b36e22e8e41937">rsv_threads.h</a></li>
+<li>rsv_thread_join()&#160;:&#160;<a class="el" href="rsv__threads_8h.html#a7970a5879e60b9f7cba31aebdbc4238d">rsv_threads.h</a></li>
 </ul>
 </div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
-</small></address>
 </div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
 </body>
 </html>

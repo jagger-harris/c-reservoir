@@ -11,6 +11,8 @@
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -50,19 +52,29 @@ $(function() { codefold.init(0); });
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','Search',false);
+  initMenu('',true,false,'search.php','Search',true);
   $(function() { init_search(); });
 });
 /* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
-<div id="doc-content">
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){ initResizable(false); });
+$(function(){initNavTree('functions.html',''); initResizable(true); });
 /* @license-end */
 </script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -87,13 +99,11 @@ $(function(){ initResizable(false); });
 <div class="contents">
 <div class="textblock">Here is a list of all class members with links to the classes they belong to:</div><ul>
 <li>amount&#160;:&#160;<a class="el" href="structrsv__dynamic__array__t.html#aee93edbe4349ead764c518a4265dfe10">rsv_dynamic_array_t</a>, <a class="el" href="structrsv__hash__set__t.html#a00e7e9455ca6fab80f9d4ce72e80fe50">rsv_hash_set_t</a>, <a class="el" href="structrsv__hash__table__t.html#a131632d4fd2804a43e623167e7aad635">rsv_hash_table_t</a></li>
-<li>buckets&#160;:&#160;<a class="el" href="structrsv__hash__set__t.html#afc392390f5ace999e32d113baaef4b41">rsv_hash_set_t</a>, <a class="el" href="structrsv__hash__table__t.html#a233e93b843aedaf834c26798b2ae913e">rsv_hash_table_t</a></li>
 <li>capacity&#160;:&#160;<a class="el" href="structrsv__dynamic__array__t.html#a69d5057e2225bdeb95d13536934a55f2">rsv_dynamic_array_t</a>, <a class="el" href="structrsv__hash__set__t.html#af6beecc2bda73e2cf2fca5606fb8c471">rsv_hash_set_t</a>, <a class="el" href="structrsv__hash__table__t.html#a20473a2bd03778faaa673265eb5dfda2">rsv_hash_table_t</a></li>
 <li>custom_compare_func&#160;:&#160;<a class="el" href="structrsv__hash__set__t.html#aa7be28e1928639633f24875a38e47df6">rsv_hash_set_t</a>, <a class="el" href="structrsv__hash__table__t.html#a398dd97a15423b0ff79263dd298f9625">rsv_hash_table_t</a></li>
 <li>custom_hash_func&#160;:&#160;<a class="el" href="structrsv__hash__set__t.html#a3930c3e0c0c920909be9ab3c3173c70e">rsv_hash_set_t</a>, <a class="el" href="structrsv__hash__table__t.html#ad57e7d31a0a76f965a25918470541fde">rsv_hash_table_t</a></li>
-<li>data&#160;:&#160;<a class="el" href="structrsv__dynamic__array__t.html#acc569230b87d51ed94191c8f55599eb3">rsv_dynamic_array_t</a>, <a class="el" href="structrsv__hash__set__entry__t.html#acaa177a03a6328804c1bc7c6a12a1c09">rsv_hash_set_entry_t</a></li>
-<li>data_size&#160;:&#160;<a class="el" href="structrsv__hash__set__t.html#a8911ae98939e52d93d1d90873b7e65e7">rsv_hash_set_t</a></li>
-<li>element_size&#160;:&#160;<a class="el" href="structrsv__dynamic__array__t.html#a571123084d252d9c0062664137dae521">rsv_dynamic_array_t</a></li>
+<li>data&#160;:&#160;<a class="el" href="structrsv__dynamic__array__t.html#acc569230b87d51ed94191c8f55599eb3">rsv_dynamic_array_t</a>, <a class="el" href="structrsv__hash__set__entry__t.html#acaa177a03a6328804c1bc7c6a12a1c09">rsv_hash_set_entry_t</a>, <a class="el" href="structrsv__hash__set__t.html#a615f84fee6aa022a846bf4d68bfaf882">rsv_hash_set_t</a>, <a class="el" href="structrsv__hash__table__t.html#a19e803f51d7dfb154097281f4949480e">rsv_hash_table_t</a></li>
+<li>element_size&#160;:&#160;<a class="el" href="structrsv__dynamic__array__t.html#a571123084d252d9c0062664137dae521">rsv_dynamic_array_t</a>, <a class="el" href="structrsv__hash__set__t.html#ace5a391dafbe811bb1911491cb5bab2c">rsv_hash_set_t</a></li>
 <li>key&#160;:&#160;<a class="el" href="structrsv__hash__table__entry__t.html#a37b2d510e7c6163b825acbd1c9a65b35">rsv_hash_table_entry_t</a></li>
 <li>key_size&#160;:&#160;<a class="el" href="structrsv__hash__table__t.html#aeb1514a8d53d6ee2752c20d1ac84a8cf">rsv_hash_table_t</a></li>
 <li>next&#160;:&#160;<a class="el" href="structrsv__hash__set__entry__t.html#acbfa106a13578c583216dc42cabbc5f2">rsv_hash_set_entry_t</a>, <a class="el" href="structrsv__hash__table__entry__t.html#a6f1ae86f16302ac14e2cfb7d0d0467ed">rsv_hash_table_entry_t</a></li>
@@ -101,10 +111,12 @@ $(function(){ initResizable(false); });
 <li>value_size&#160;:&#160;<a class="el" href="structrsv__hash__table__t.html#a690f1f4fd70eb9ada601da0ffa6ecc44">rsv_hash_table_t</a></li>
 </ul>
 </div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0
-</small></address>
 </div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
 </body>
 </html>
