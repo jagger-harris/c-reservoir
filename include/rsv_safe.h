@@ -26,11 +26,11 @@
  * @param src The source string to be copied
  * @param dest_size The size of the destination buffer
  */
-void rsv_strcpy(char* dest, const char* src, size_t dest_size);
+static void rsv_strcpy(char* dest, const char* src, size_t dest_size);
 
 /**************** Implementations ****************/
 
-void rsv_strcpy(char* dest, const char* src, size_t dest_size) {
+static void rsv_strcpy(char* dest, const char* src, size_t dest_size) {
   size_t i;
 
   if (dest == NULL || src == NULL || dest_size == 0) {

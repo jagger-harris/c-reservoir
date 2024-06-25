@@ -32,7 +32,7 @@ typedef pthread_mutex_t rsv_mutex_t;
  * @param arg Argument to be passed to the `start_routine` function
  * @return 0 on success, or an error code on failure
  */
-int rsv_thread_create(rsv_thread_t* thread, void* (*start_routine)(void*),
+static int rsv_thread_create(rsv_thread_t* thread, void* (*start_routine)(void*),
                       void* arg);
 
 /**
@@ -46,7 +46,7 @@ int rsv_thread_create(rsv_thread_t* thread, void* (*start_routine)(void*),
  * status.
  * @return 0 on success, or an error code on failur
  */
-int rsv_thread_join(rsv_thread_t thread, void** retval);
+static int rsv_thread_join(rsv_thread_t thread, void** retval);
 
 /**
  * @brief Creates a mutex
@@ -58,7 +58,7 @@ int rsv_thread_join(rsv_thread_t thread, void** retval);
  * will be stored
  * @return 0 on success, or an error code on failure
  */
-int rsv_mutex_create(rsv_mutex_t* mutex);
+static int rsv_mutex_create(rsv_mutex_t* mutex);
 
 /**
  * @brief Destroys a mutex
@@ -69,7 +69,7 @@ int rsv_mutex_create(rsv_mutex_t* mutex);
  * @param mutex Pointer to the mutex to destroy
  * @return 0 on success, or an error code on failure
  */
-int rsv_mutex_destroy(rsv_mutex_t* mutex);
+static int rsv_mutex_destroy(rsv_mutex_t* mutex);
 
 /**
  * @brief Locks a mutex
@@ -80,7 +80,7 @@ int rsv_mutex_destroy(rsv_mutex_t* mutex);
  * @param mutex Pointer to the mutex to lock
  * @return 0 on success, or an error code on failure
  */
-int rsv_mutex_lock(rsv_mutex_t* mutex);
+static int rsv_mutex_lock(rsv_mutex_t* mutex);
 
 /**
  * @brief Unlocks a mutex
@@ -91,32 +91,32 @@ int rsv_mutex_lock(rsv_mutex_t* mutex);
  * @param mutex Pointer to the mutex to unlock
  * @return 0 on success, or an error code on failure
  */
-int rsv_mutex_unlock(rsv_mutex_t* mutex);
+static int rsv_mutex_unlock(rsv_mutex_t* mutex);
 
 /**************** Implementations ****************/
 
-int rsv_thread_create(rsv_thread_t* thread, void* (*start_routine)(void*),
+static int rsv_thread_create(rsv_thread_t* thread, void* (*start_routine)(void*),
                       void* arg) {
   return pthread_create(thread, NULL, start_routine, arg);
 }
 
-int rsv_thread_join(rsv_thread_t thread, void** retval) {
+static int rsv_thread_join(rsv_thread_t thread, void** retval) {
   return pthread_join(thread, retval);
 }
 
-int rsv_mutex_create(rsv_mutex_t* mutex) {
+static int rsv_mutex_create(rsv_mutex_t* mutex) {
   return pthread_mutex_init(mutex, NULL);
 }
 
-int rsv_mutex_destroy(rsv_mutex_t* mutex) {
+static int rsv_mutex_destroy(rsv_mutex_t* mutex) {
   return pthread_mutex_destroy(mutex);
 }
 
-int rsv_mutex_lock(rsv_mutex_t* mutex) {
+static int rsv_mutex_lock(rsv_mutex_t* mutex) {
   return pthread_mutex_lock(mutex);
 }
 
-int rsv_mutex_unlock(rsv_mutex_t* mutex) {
+static int rsv_mutex_unlock(rsv_mutex_t* mutex) {
   return pthread_mutex_unlock(mutex);
 }
 
