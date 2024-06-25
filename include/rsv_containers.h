@@ -21,10 +21,31 @@
 
 #define RSV_DYNAMIC_ARRAY_GROWTH_AMOUNT RSV_GOLDEN_RATIO
 
+/**
+ * @brief A dynamic array which automatically resizes and can take any type.
+ * Make sure to cast your type from the void pointer.
+ *
+ */
 typedef struct rsv_dynamic_array_t {
+  /**
+   * @brief The array data. Use this to access data from within the array.
+   *
+   */
   void* data;
+  /**
+   * @brief The amount of data values in the array.
+   *
+   */
   unsigned int amount;
+  /**
+   * @brief The amount of data that can be stored.
+   *
+   */
   unsigned int capacity;
+  /**
+   * @brief The size of an element in memory.
+   *
+   */
   unsigned int element_size;
 } rsv_dynamic_array_t;
 
@@ -75,19 +96,59 @@ static void rsv_dynamic_array_pop(rsv_dynamic_array_t* array);
 
 #define RSV_HASH_TABLE_LOAD_FACTOR 0.75
 
+/**
+ * @brief A hash table entry. Should not be directly used unless necessary.
+ *
+ */
 typedef struct rsv_hash_table_entry_t {
   void* key;
   void* value;
   struct rsv_hash_table_entry_t* next;
 } rsv_hash_table_entry_t;
 
+/**
+ * @brief A hash table which automatically resizes and can take any type. Make
+ * sure to cast your type from the void pointer.
+ *
+ */
 typedef struct rsv_hash_table_t {
-  rsv_hash_table_entry_t** buckets;
+  /**
+   * @brief The hash table data. Use this to access data from within the hash
+   * table.
+   *
+   */
+  rsv_hash_table_entry_t** data;
+  /**
+   * @brief The amount of hash table entries in the hash table.
+   *
+   */
   unsigned int amount;
+  /**
+   * @brief The amount of hash table entries that can be stored.
+   *
+   */
   unsigned int capacity;
+  /**
+   * @brief The size of the key in memory.
+   *
+   */
   unsigned int key_size;
+  /**
+   * @brief The size of the value in memory.
+   *
+   */
   unsigned int value_size;
+  /**
+   * @brief Use if the hash table would need a custom hash function. Set to NULL
+   * for default hashing.
+   *
+   */
   unsigned int (*custom_hash_func)(const void*, unsigned int);
+  /**
+   * @brief Use if the hash table would need a custom comparing function for
+   * comparing values inside the table. Set to NULL for default comparing.
+   *
+   */
   int (*custom_compare_func)(const void*, const void*, unsigned int);
 } rsv_hash_table_t;
 
@@ -95,29 +156,29 @@ typedef struct rsv_hash_table_t {
  * @brief Generates a hash for the given data
  *
  * @param data Pointer to the data to hash
- * @param data_size Size of the data in bytes
+ * @param element_size Size of the data in memory
  * @return The generated hash value
  */
 static unsigned int rsv_hash_table_hash(const void* data,
-                                        unsigned int data_size);
+                                        unsigned int element_size);
 
 /**
  * @brief Compares two pieces of data
  *
  * @param data1 Pointer to the first data
  * @param data2 Pointer to the second data
- * @param data_size Size of the data in bytes
+ * @param element_size Size of the data in memory
  * @return 1 if the data are equal, 0 otherwise
  */
 static int rsv_hash_table_compare(const void* data1, const void* data2,
-                                  unsigned int data_size);
+                                  unsigned int element_size);
 
 /**
  * @brief Creates a hash table
  *
  * @param capacity Initial capacity of the hash table
- * @param key_size Size of each key in bytes
- * @param value_size Size of each value in bytes
+ * @param key_size Size of each key in memory
+ * @param value_size Size of each value in memory
  * @param custom_hash_func Pointer to a custom hash function, or NULL to use the
  * default
  * @param custom_compare_func Pointer to a custom compare function, or NULL to
@@ -178,17 +239,52 @@ static void rsv_hash_table_pop(rsv_hash_table_t* hash_table, const void* key);
 
 #define RSV_HASH_SET_LOAD_FACTOR 0.75
 
+/**
+ * @brief A hash set entry. Should not be directly used unless necessary.
+ *
+ */
 typedef struct rsv_hash_set_entry_t {
   void* data;
   struct rsv_hash_set_entry_t* next;
 } rsv_hash_set_entry_t;
 
+/**
+ * @brief A hash set which automatically resizes and can take any type. Make
+ * sure to cast your type from the void pointer.
+ *
+ */
 typedef struct rsv_hash_set_t {
-  rsv_hash_set_entry_t** buckets;
+  /**
+   * @brief The hash set data. Use this to access data from within the hash set.
+   *
+   */
+  rsv_hash_set_entry_t** data;
+  /**
+   * @brief The amount of hash set entries in the hash set.
+   *
+   */
   unsigned int amount;
+  /**
+   * @brief The amount of hash set entries that can be stored.
+   *
+   */
   unsigned int capacity;
-  unsigned int data_size;
+  /**
+   * @brief The size of an element in memory.
+   *
+   */
+  unsigned int element_size;
+  /**
+   * @brief Use if the hash set would need a custom hash function. Set to NULL
+   * for default hashing.
+   *
+   */
   unsigned int (*custom_hash_func)(const void*, unsigned int);
+  /**
+   * @brief Use if the hash table would need a custom comparing function for
+   * comparing values inside the table. Set to NULL for default comparing.
+   *
+   */
   int (*custom_compare_func)(const void*, const void*, unsigned int);
 } rsv_hash_set_t;
 
@@ -196,27 +292,28 @@ typedef struct rsv_hash_set_t {
  * @brief Generates a hash for the given data
  *
  * @param data Pointer to the data to hash
- * @param data_size Size of the data in bytes
+ * @param element_size Size of the data in memory
  * @return The generated hash value
  */
-static unsigned int rsv_hash_set_hash(const void* data, unsigned int data_size);
+static unsigned int rsv_hash_set_hash(const void* data,
+                                      unsigned int element_size);
 
 /**
  * @brief Compares two pieces of data
  *
  * @param data_a Pointer to the first data
  * @param data_b Pointer to the second data
- * @param data_size Size of the data in bytes
+ * @param element_size Size of the data in memory
  * @return 1 if the data are equal, 0 otherwise
  */
 static int rsv_hash_set_compare(const void* data_a, const void* data_b,
-                                unsigned int data_size);
+                                unsigned int element_size);
 
 /**
  * @brief Creates a hash set.
  *
  * @param capacity Initial capacity of the hash set
- * @param data_size Size of each element in the hash set
+ * @param element_size Size of each element in the hash set
  * @param custom_hash_func Pointer to a custom hash function, or NULL to use the
  * default
  * @param custom_compare_func Pointer to a custom compare function, or NULL to
@@ -224,7 +321,7 @@ static int rsv_hash_set_compare(const void* data_a, const void* data_b,
  * @return A rsv_hash_set_t struct representing the created hash set
  */
 static rsv_hash_set_t rsv_hash_set_create(
-    unsigned int capacity, unsigned int data_size,
+    unsigned int capacity, unsigned int element_size,
     unsigned int (*custom_hash_func)(const void*, unsigned int),
     int (*custom_compare_func)(const void*, const void*, unsigned int));
 
@@ -335,12 +432,12 @@ static void rsv_dynamic_array_pop(rsv_dynamic_array_t* array) {
 /******** Hash table ********/
 
 static unsigned int rsv_hash_table_hash(const void* data,
-                                        unsigned int data_size) {
+                                        unsigned int element_size) {
   const unsigned char* data_key = (const unsigned char*)data;
   unsigned int hash = 0;
   unsigned int i;
 
-  for (i = 0; i < data_size; ++i) {
+  for (i = 0; i < element_size; ++i) {
     hash = (hash * 31) + data_key[i];
   }
 
@@ -348,8 +445,8 @@ static unsigned int rsv_hash_table_hash(const void* data,
 }
 
 static int rsv_hash_table_compare(const void* data1, const void* data2,
-                                  unsigned int data_size) {
-  return memcmp(data1, data2, data_size) == 0;
+                                  unsigned int element_size) {
+  return memcmp(data1, data2, element_size) == 0;
 }
 
 static rsv_hash_table_t rsv_hash_table_create(
@@ -358,7 +455,7 @@ static rsv_hash_table_t rsv_hash_table_create(
     int (*custom_compare_func)(const void*, const void*, unsigned int)) {
   rsv_hash_table_t hash_table;
 
-  hash_table.buckets = (rsv_hash_table_entry_t**)calloc(
+  hash_table.data = (rsv_hash_table_entry_t**)calloc(
       capacity, sizeof(rsv_hash_table_entry_t*));
   hash_table.amount = 0;
   hash_table.capacity = capacity;
@@ -383,7 +480,7 @@ static void rsv_hash_table_destroy(rsv_hash_table_t* hash_table) {
   unsigned int i;
 
   for (i = 0; i < hash_table->capacity; ++i) {
-    rsv_hash_table_entry_t* entry = hash_table->buckets[i];
+    rsv_hash_table_entry_t* entry = hash_table->data[i];
 
     while (entry) {
       rsv_hash_table_entry_t* next = entry->next;
@@ -394,8 +491,8 @@ static void rsv_hash_table_destroy(rsv_hash_table_t* hash_table) {
     }
   }
 
-  free(hash_table->buckets);
-  hash_table->buckets = NULL;
+  free(hash_table->data);
+  hash_table->data = NULL;
   hash_table->amount = 0;
   hash_table->capacity = 0;
 }
@@ -403,31 +500,31 @@ static void rsv_hash_table_destroy(rsv_hash_table_t* hash_table) {
 static void rsv_hash_table_resize(rsv_hash_table_t* hash_table,
                                   unsigned int new_capacity) {
   unsigned int i;
-  rsv_hash_table_entry_t** new_buckets = (rsv_hash_table_entry_t**)calloc(
+  rsv_hash_table_entry_t** new_data = (rsv_hash_table_entry_t**)calloc(
       new_capacity, sizeof(rsv_hash_table_entry_t*));
 
   for (i = 0; i < hash_table->capacity; ++i) {
-    rsv_hash_table_entry_t* entry = hash_table->buckets[i];
+    rsv_hash_table_entry_t* entry = hash_table->data[i];
     while (entry) {
       rsv_hash_table_entry_t* next = entry->next;
       unsigned int new_index =
           hash_table->custom_hash_func(entry->key, hash_table->key_size) %
           new_capacity;
-      entry->next = new_buckets[new_index];
-      new_buckets[new_index] = entry;
+      entry->next = new_data[new_index];
+      new_data[new_index] = entry;
       entry = next;
     }
   }
 
-  free(hash_table->buckets);
-  hash_table->buckets = new_buckets;
+  free(hash_table->data);
+  hash_table->data = new_data;
   hash_table->capacity = new_capacity;
 }
 
 static void* rsv_hash_table_get(rsv_hash_table_t* hash_table, const void* key) {
   unsigned int index = hash_table->custom_hash_func(key, hash_table->key_size) %
                        hash_table->capacity;
-  rsv_hash_table_entry_t* entry = hash_table->buckets[index];
+  rsv_hash_table_entry_t* entry = hash_table->data[index];
 
   while (entry) {
     if (hash_table->custom_compare_func(entry->key, key,
@@ -452,7 +549,7 @@ static void rsv_hash_table_push(rsv_hash_table_t* hash_table, const void* key,
 
   index = hash_table->custom_hash_func(key, hash_table->key_size) %
           hash_table->capacity;
-  entry = hash_table->buckets[index];
+  entry = hash_table->data[index];
 
   while (entry) {
     if (hash_table->custom_compare_func(entry->key, key,
@@ -468,15 +565,15 @@ static void rsv_hash_table_push(rsv_hash_table_t* hash_table, const void* key,
   new_entry->value = malloc(hash_table->value_size);
   memcpy(new_entry->key, key, hash_table->key_size);
   memcpy(new_entry->value, value, hash_table->value_size);
-  new_entry->next = hash_table->buckets[index];
-  hash_table->buckets[index] = new_entry;
+  new_entry->next = hash_table->data[index];
+  hash_table->data[index] = new_entry;
   hash_table->amount++;
 }
 
 static void rsv_hash_table_pop(rsv_hash_table_t* hash_table, const void* key) {
   unsigned int index = hash_table->custom_hash_func(key, hash_table->key_size) %
                        hash_table->capacity;
-  rsv_hash_table_entry_t* entry = hash_table->buckets[index];
+  rsv_hash_table_entry_t* entry = hash_table->data[index];
   rsv_hash_table_entry_t* prev = NULL;
 
   while (entry) {
@@ -485,7 +582,7 @@ static void rsv_hash_table_pop(rsv_hash_table_t* hash_table, const void* key) {
       if (prev) {
         prev->next = entry->next;
       } else {
-        hash_table->buckets[index] = entry->next;
+        hash_table->data[index] = entry->next;
       }
 
       free(entry->key);
@@ -504,12 +601,12 @@ static void rsv_hash_table_pop(rsv_hash_table_t* hash_table, const void* key) {
 /******** Hash set ********/
 
 static unsigned int rsv_hash_set_hash(const void* data,
-                                      unsigned int data_size) {
+                                      unsigned int element_size) {
   const unsigned char* data_key = (const unsigned char*)data;
   unsigned int hash = 0;
   unsigned int i;
 
-  for (i = 0; i < data_size; ++i) {
+  for (i = 0; i < element_size; ++i) {
     hash = (hash * 31) + data_key[i];
   }
 
@@ -517,21 +614,21 @@ static unsigned int rsv_hash_set_hash(const void* data,
 }
 
 static int rsv_hash_set_compare(const void* data1, const void* data2,
-                                unsigned int data_size) {
-  return memcmp(data1, data2, data_size) == 0;
+                                unsigned int element_size) {
+  return memcmp(data1, data2, element_size) == 0;
 }
 
 static rsv_hash_set_t rsv_hash_set_create(
-    unsigned int capacity, unsigned int data_size,
+    unsigned int capacity, unsigned int element_size,
     unsigned int (*custom_hash_func)(const void*, unsigned int),
     int (*custom_compare_func)(const void*, const void*, unsigned int)) {
   rsv_hash_set_t hash_set;
 
-  hash_set.buckets =
+  hash_set.data =
       (rsv_hash_set_entry_t**)calloc(capacity, sizeof(rsv_hash_set_entry_t*));
   hash_set.amount = 0;
   hash_set.capacity = capacity;
-  hash_set.data_size = data_size;
+  hash_set.element_size = element_size;
 
   if (custom_hash_func == NULL) {
     custom_hash_func = rsv_hash_set_hash;
@@ -551,7 +648,7 @@ static void rsv_hash_set_destroy(rsv_hash_set_t* hash_set) {
   unsigned int i;
 
   for (i = 0; i < hash_set->capacity; ++i) {
-    rsv_hash_set_entry_t* entry = hash_set->buckets[i];
+    rsv_hash_set_entry_t* entry = hash_set->data[i];
 
     while (entry) {
       rsv_hash_set_entry_t* next = entry->next;
@@ -561,8 +658,8 @@ static void rsv_hash_set_destroy(rsv_hash_set_t* hash_set) {
     }
   }
 
-  free(hash_set->buckets);
-  hash_set->buckets = NULL;
+  free(hash_set->data);
+  hash_set->data = NULL;
   hash_set->amount = 0;
   hash_set->capacity = 0;
 }
@@ -570,34 +667,36 @@ static void rsv_hash_set_destroy(rsv_hash_set_t* hash_set) {
 static void rsv_hash_set_resize(rsv_hash_set_t* hash_set,
                                 unsigned int new_capacity) {
   unsigned int i;
-  rsv_hash_set_entry_t** new_buckets = (rsv_hash_set_entry_t**)calloc(
+  rsv_hash_set_entry_t** new_data = (rsv_hash_set_entry_t**)calloc(
       new_capacity, sizeof(rsv_hash_set_entry_t*));
 
   for (i = 0; i < hash_set->capacity; ++i) {
-    rsv_hash_set_entry_t* entry = hash_set->buckets[i];
+    rsv_hash_set_entry_t* entry = hash_set->data[i];
     while (entry) {
       rsv_hash_set_entry_t* next = entry->next;
       unsigned int new_index =
-          hash_set->custom_hash_func(entry->data, hash_set->data_size) %
+          hash_set->custom_hash_func(entry->data, hash_set->element_size) %
           new_capacity;
-      entry->next = new_buckets[new_index];
-      new_buckets[new_index] = entry;
+      entry->next = new_data[new_index];
+      new_data[new_index] = entry;
       entry = next;
     }
   }
 
-  free(hash_set->buckets);
-  hash_set->buckets = new_buckets;
+  free(hash_set->data);
+  hash_set->data = new_data;
   hash_set->capacity = new_capacity;
 }
 
 static int rsv_hash_set_contains(rsv_hash_set_t* hash_set, const void* data) {
-  unsigned int index = hash_set->custom_hash_func(data, hash_set->data_size) %
-                       hash_set->capacity;
-  rsv_hash_set_entry_t* entry = hash_set->buckets[index];
+  unsigned int index =
+      hash_set->custom_hash_func(data, hash_set->element_size) %
+      hash_set->capacity;
+  rsv_hash_set_entry_t* entry = hash_set->data[index];
 
   while (entry) {
-    if (hash_set->custom_compare_func(entry->data, data, hash_set->data_size)) {
+    if (hash_set->custom_compare_func(entry->data, data,
+                                      hash_set->element_size)) {
       return 1;
     }
 
@@ -615,37 +714,40 @@ static void rsv_hash_set_push(rsv_hash_set_t* hash_set, const void* data) {
     rsv_hash_set_resize(hash_set, hash_set->capacity * 2);
   }
 
-  index = hash_set->custom_hash_func(data, hash_set->data_size) %
+  index = hash_set->custom_hash_func(data, hash_set->element_size) %
           hash_set->capacity;
-  entry = hash_set->buckets[index];
+  entry = hash_set->data[index];
 
   while (entry) {
-    if (hash_set->custom_compare_func(entry->data, data, hash_set->data_size)) {
+    if (hash_set->custom_compare_func(entry->data, data,
+                                      hash_set->element_size)) {
       return;
     }
     entry = entry->next;
   }
 
   new_entry = (rsv_hash_set_entry_t*)malloc(sizeof(rsv_hash_set_entry_t));
-  new_entry->data = malloc(hash_set->data_size);
-  memcpy(new_entry->data, data, hash_set->data_size);
-  new_entry->next = hash_set->buckets[index];
-  hash_set->buckets[index] = new_entry;
+  new_entry->data = malloc(hash_set->element_size);
+  memcpy(new_entry->data, data, hash_set->element_size);
+  new_entry->next = hash_set->data[index];
+  hash_set->data[index] = new_entry;
   hash_set->amount++;
 }
 
 static void rsv_hash_set_pop(rsv_hash_set_t* hash_set, const void* data) {
-  unsigned int index = hash_set->custom_hash_func(data, hash_set->data_size) %
-                       hash_set->capacity;
-  rsv_hash_set_entry_t* entry = hash_set->buckets[index];
+  unsigned int index =
+      hash_set->custom_hash_func(data, hash_set->element_size) %
+      hash_set->capacity;
+  rsv_hash_set_entry_t* entry = hash_set->data[index];
   rsv_hash_set_entry_t* prev = NULL;
 
   while (entry) {
-    if (hash_set->custom_compare_func(entry->data, data, hash_set->data_size)) {
+    if (hash_set->custom_compare_func(entry->data, data,
+                                      hash_set->element_size)) {
       if (prev) {
         prev->next = entry->next;
       } else {
-        hash_set->buckets[index] = entry->next;
+        hash_set->data[index] = entry->next;
       }
 
       free(entry->data);
