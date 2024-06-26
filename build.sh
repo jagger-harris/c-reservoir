@@ -2,20 +2,13 @@
 
 build=false
 test=false
-test_case=""
 
 if [ "$1" = "build" ]; then
   build=true
 fi
 
-if [ "$1" = "test" ] ; then
+if [ "$1" = "test" ] || [ "$2" = "test" ]; then
   test=true
-  test_case="$2"
-fi
-
-if [ "$2" = "test" ] ; then
-  test=true
-  test_case="$3"
 fi
 
 if $build; then
@@ -32,11 +25,7 @@ fi
 if $test; then
   if [ -d "./build" ]; then
     cd build || exit
-    if [ -n "$test_case" ]; then
-      ./tests/"$test_case"
-    else
-      test=false
-    fi
+    ./tests/rsv_test
   else
     echo "Build folder not located: ./build.sh build"
   fi

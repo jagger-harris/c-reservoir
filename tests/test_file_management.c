@@ -14,11 +14,4 @@ void test_file_management(void) {
   assert(loaded_content != NULL);
   assert(strcmp(loaded_content, save_content) == 0);
   free((void*)loaded_content);
-
-  printf("All file management tests passed!\n");
-}
-
-int main(void) {
-  test_file_management();
-  exit(EXIT_SUCCESS);
 }

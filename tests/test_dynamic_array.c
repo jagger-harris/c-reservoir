@@ -45,10 +45,4 @@ void test_dynamic_array(void) {
   assert(rsv_dynamic_array_get(&array, 2) == NULL);
 
   rsv_dynamic_array_destroy(&array);
-  printf("All dynamic array tests passed!\n");
-}
-
-int main(void) {
-  test_dynamic_array();
-  exit(EXIT_SUCCESS);
 }

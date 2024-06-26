@@ -39,11 +39,4 @@ void test_rsv_strcpy(void) {
 
   /* Test: dest_size is 0 */
   rsv_strcpy(dest, "test", 0); /* Should do nothing, no assert needed */
-
-  printf("All rsv strcpy tests passed!\n");
-}
-
-int main(void) {
-  test_rsv_strcpy();
-  exit(EXIT_SUCCESS);
 }

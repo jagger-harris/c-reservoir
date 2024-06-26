@@ -21,7 +21,7 @@ void* increment_counter(void* arg) {
   return NULL;
 }
 
-void test_threading(void) {
+void test_threads(void) {
   rsv_thread_t thread1;
   rsv_thread_t thread2;
   shared_data_t data;
@@ -42,11 +42,4 @@ void test_threading(void) {
   assert(data.counter == 2000);
 
   rsv_mutex_destroy(&data.mutex);
-
-  printf("All threading tests passed!\n");
-}
-
-int main(void) {
-  test_threading();
-  exit(EXIT_SUCCESS);
 }

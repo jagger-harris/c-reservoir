@@ -48,10 +48,4 @@ void test_hash_table(void) {
 
   /* Clean up */
   rsv_hash_table_destroy(&hash_table);
-  printf("All hash table tests passed!\n");
-}
-
-int main(void) {
-  test_hash_table();
-  exit(EXIT_SUCCESS);
 }

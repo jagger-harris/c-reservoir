@@ -1,14 +1,8 @@
-# Find all test files
-file(GLOB TEST_FILES "${CMAKE_SOURCE_DIR}/tests/test_*.c")
+file(GLOB TEST_SOURCE_FILES *.h *.c)
 
-# Loop through each test file to create an executable
-foreach(TEST_FILE ${TEST_FILES})
-  # Get the filename without extension
-  get_filename_component(TEST_NAME ${TEST_FILE} NAME_WE)
+add_executable(rsv_test ${TEST_SOURCE_FILES})
 
-  # Create an executable for each test file
-  add_executable(${TEST_NAME} ${TEST_FILE} ${SOURCE_FILES})
+target_link_libraries(rsv_test ${SOURCE_FILES} m)
 
-  # Optionally, you can add a target for running the test
-  add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME})
-endforeach()
+enable_testing()
+add_test(NAME AllTests COMMAND rsv_test)

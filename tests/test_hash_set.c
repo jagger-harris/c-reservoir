@@ -59,10 +59,4 @@ void test_hash_set(void) {
   assert(rsv_hash_set_contains(&hash_set, test_key) == 0);
 
   rsv_hash_set_destroy(&hash_set);
-  printf("All hash set tests passed!\n");
-}
-
-int main(void) {
-  test_hash_set();
-  exit(EXIT_SUCCESS);
 }
