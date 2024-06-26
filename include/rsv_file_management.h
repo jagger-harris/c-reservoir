@@ -46,7 +46,7 @@ static void rsv_file_save_text_file(const char* file_path, const char* content);
 static const char* rsv_file_load_text_file(const char* file_path) {
   FILE* file = fopen(file_path, "r");
   long length = 0;
-  char* content = "";
+  char* content = NULL;
 
   if (!file) {
     fprintf(stderr, "Failed to open file\n");
