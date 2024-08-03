@@ -165,12 +165,12 @@ static unsigned int rsv_hash_table_hash(const void* data,
 /**
  * @brief Compares two pieces of data
  *
- * @param data1 Pointer to the first data
- * @param data2 Pointer to the second data
+ * @param data_a Pointer to the first data
+ * @param data_b Pointer to the second data
  * @param element_size Size of the data in memory
  * @return 1 if the data are equal, 0 otherwise
  */
-static int rsv_hash_table_compare(const void* data1, const void* data2,
+static int rsv_hash_table_compare(const void* data_a, const void* data_b,
                                   unsigned int element_size);
 
 /**
@@ -444,9 +444,9 @@ static unsigned int rsv_hash_table_hash(const void* data,
   return hash;
 }
 
-static int rsv_hash_table_compare(const void* data1, const void* data2,
+static int rsv_hash_table_compare(const void* data_a, const void* data_b,
                                   unsigned int element_size) {
-  return memcmp(data1, data2, element_size) == 0;
+  return memcmp(data_a, data_b, element_size) == 0;
 }
 
 static rsv_hash_table_t rsv_hash_table_create(
@@ -613,9 +613,9 @@ static unsigned int rsv_hash_set_hash(const void* data,
   return hash;
 }
 
-static int rsv_hash_set_compare(const void* data1, const void* data2,
+static int rsv_hash_set_compare(const void* data_a, const void* data_b,
                                 unsigned int element_size) {
-  return memcmp(data1, data2, element_size) == 0;
+  return memcmp(data_a, data_b, element_size) == 0;
 }
 
 static rsv_hash_set_t rsv_hash_set_create(
