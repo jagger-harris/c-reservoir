@@ -130,7 +130,7 @@ $(function(){initNavTree('rsv__file__management_8h_source.html',''); initResizab
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="rsv__file__management_8h.html#a5aa69d1802579a328e8de7173c560e24">   46</a></span><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_function" href="rsv__file__management_8h.html#a5aa69d1802579a328e8de7173c560e24">rsv_file_load_text_file</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* file_path) {</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  FILE* file = fopen(file_path, <span class="stringliteral">&quot;r&quot;</span>);</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="keywordtype">long</span> length = 0;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <span class="keywordtype">char</span>* content = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <span class="keywordtype">char</span>* content = NULL;</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  <span class="keywordflow">if</span> (!file) {</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    fprintf(stderr, <span class="stringliteral">&quot;Failed to open file\n&quot;</span>);</div>

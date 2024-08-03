@@ -177,9 +177,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a972a29a7aba395b52c848c6fb009557d" id="r_a972a29a7aba395b52c848c6fb009557d"><td class="memItemLeft" align="right" valign="top">static unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a972a29a7aba395b52c848c6fb009557d">rsv_hash_table_hash</a> (const void *data, unsigned int element_size)</td></tr>
 <tr class="memdesc:a972a29a7aba395b52c848c6fb009557d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a hash for the given data.  <br /></td></tr>
 <tr class="separator:a972a29a7aba395b52c848c6fb009557d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adff0c43c10becb87fb9d9a607db90989" id="r_adff0c43c10becb87fb9d9a607db90989"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adff0c43c10becb87fb9d9a607db90989">rsv_hash_table_compare</a> (const void *data1, const void *data2, unsigned int element_size)</td></tr>
-<tr class="memdesc:adff0c43c10becb87fb9d9a607db90989"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two pieces of data.  <br /></td></tr>
-<tr class="separator:adff0c43c10becb87fb9d9a607db90989"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93ece5604f325f29577a3f27ffc29600" id="r_a93ece5604f325f29577a3f27ffc29600"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a93ece5604f325f29577a3f27ffc29600">rsv_hash_table_compare</a> (const void *data_a, const void *data_b, unsigned int element_size)</td></tr>
+<tr class="memdesc:a93ece5604f325f29577a3f27ffc29600"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two pieces of data.  <br /></td></tr>
+<tr class="separator:a93ece5604f325f29577a3f27ffc29600"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2dad6979d3c5ebb024bdba85dd5a31e6" id="r_a2dad6979d3c5ebb024bdba85dd5a31e6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structrsv__hash__table__t.html">rsv_hash_table_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2dad6979d3c5ebb024bdba85dd5a31e6">rsv_hash_table_create</a> (unsigned int capacity, unsigned int key_size, unsigned int value_size, unsigned int(*custom_hash_func)(const void *, unsigned int), int(*custom_compare_func)(const void *, const void *, unsigned int))</td></tr>
 <tr class="memdesc:a2dad6979d3c5ebb024bdba85dd5a31e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a hash table.  <br /></td></tr>
 <tr class="separator:a2dad6979d3c5ebb024bdba85dd5a31e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -851,8 +851,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="adff0c43c10becb87fb9d9a607db90989" name="adff0c43c10becb87fb9d9a607db90989"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adff0c43c10becb87fb9d9a607db90989">&#9670;&#160;</a></span>rsv_hash_table_compare()</h2>
+<a id="a93ece5604f325f29577a3f27ffc29600" name="a93ece5604f325f29577a3f27ffc29600"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93ece5604f325f29577a3f27ffc29600">&#9670;&#160;</a></span>rsv_hash_table_compare()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -863,12 +863,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">static int rsv_hash_table_compare </td>
           <td>(</td>
-          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>data1</em></span>, </td>
+          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>data_a</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>data2</em></span>, </td>
+          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>data_b</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -886,8 +886,8 @@ Functions</h2></td></tr>
 <p>Compares two pieces of data. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">data1</td><td>Pointer to the first data </td></tr>
-    <tr><td class="paramname">data2</td><td>Pointer to the second data </td></tr>
+    <tr><td class="paramname">data_a</td><td>Pointer to the first data </td></tr>
+    <tr><td class="paramname">data_b</td><td>Pointer to the second data </td></tr>
     <tr><td class="paramname">element_size</td><td>Size of the data in memory </td></tr>
   </table>
   </dd>
