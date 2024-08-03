@@ -7,7 +7,7 @@ It is currently a work-in-progress.
 Requires git and CMake 3.5 or later to build.
 
 ## Documentation
-You can read the documentation [here](https://jagger-harris.github.io/reservoir/).
+You can read the documentation [here](https://jagger-harris.github.io/c-reservoir/).
 
 ## Dependencies
 * CMake 3.5 or greater
@@ -16,7 +16,7 @@ You can read the documentation [here](https://jagger-harris.github.io/reservoir/
 ## Compiling and Running
 Clone the repository:
 ```shell
-git clone https://github.com/jagger-harris/reservoir.git
+git clone https://github.com/jagger-harris/c-reservoir.git
 cd reservoir
 ```
 
