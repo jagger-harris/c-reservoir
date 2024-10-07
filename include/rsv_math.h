@@ -42,7 +42,7 @@ static int rsv_floor(float x) {
   }
 }
 
-static int rsv_ceilf(float x) {
+static int rsv_ceil(float x) {
   if (x >= 0) {
     int int_part = (int)x;
     return x == int_part ? x : (int_part + 1);
