@@ -12,8 +12,11 @@
 #ifndef RSV_THREADS_H
 #define RSV_THREADS_H
 
-/******** Unix ********/
+#if defined(_WIN32) || defined(_WIN64)
 
+#elif __APPLE__
+
+#elif defined(__unix__)
 #include <pthread.h>
 
 typedef pthread_t rsv_thread_t;
@@ -32,8 +35,8 @@ typedef pthread_mutex_t rsv_mutex_t;
  * @param arg Argument to be passed to the `start_routine` function
  * @return 0 on success, or an error code on failure
  */
-static int rsv_thread_create(rsv_thread_t* thread, void* (*start_routine)(void*),
-                      void* arg);
+static int rsv_thread_create(rsv_thread_t* thread,
+                             void* (*start_routine)(void*), void* arg);
 
 /**
  * @brief Waits for a thread to terminate
@@ -95,8 +98,8 @@ static int rsv_mutex_unlock(rsv_mutex_t* mutex);
 
 /**************** Implementations ****************/
 
-static int rsv_thread_create(rsv_thread_t* thread, void* (*start_routine)(void*),
-                      void* arg) {
+static int rsv_thread_create(rsv_thread_t* thread,
+                             void* (*start_routine)(void*), void* arg) {
   return pthread_create(thread, NULL, start_routine, arg);
 }
 
@@ -119,5 +122,8 @@ static int rsv_mutex_lock(rsv_mutex_t* mutex) {
 static int rsv_mutex_unlock(rsv_mutex_t* mutex) {
   return pthread_mutex_unlock(mutex);
 }
+#else
+#error "Unknown compiler"
+#endif
 
 #endif /* RSV_THREADS_H */
