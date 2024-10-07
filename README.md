@@ -13,34 +13,25 @@ You can read the documentation [here](https://jagger-harris.github.io/c-reservoi
 * CMake 3.5 or greater
 * C89 compiler
 
-## Compiling and Running
+## Testing
 Clone the repository:
 ```shell
 git clone https://github.com/jagger-harris/c-reservoir.git
-cd reservoir
+cd c-reservoir
 ```
 
-Using provided build script:
+Using provided test script:
 ```shell
-./build.sh build
+./test.sh
 ```
 
-Without build script:
+Without test script:
 ```shell
 mkdir build
 cd build
 cmake ..
 make
-```
-
-Using testing with build script:
-```shell
-./build.sh test <test_case>
-```
-
-Without build script:
-```shell
-./tests/<test_case>
+ctest --verbose --rerun-failed --output-on-failure
 ```
 
 ## Contributing
