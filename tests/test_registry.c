@@ -1,12 +1,12 @@
 #include "test_registry.h"
 #include <stdlib.h>
 
-void test_dynamic_array(void);
-void test_file_management(void);
-void test_hash_set(void);
-void test_hash_table(void);
-void test_rsv_strcpy(void);
-void test_threads(void);
+int test_dynamic_array(void);
+int test_file_management(void);
+int test_hash_set(void);
+int test_hash_table(void);
+int test_rsv_strcpy(void);
+int test_threads(void);
 
 test_entry_t test_registry[] = {
   REGISTER_TEST("Dynamic Array Test", test_dynamic_array),

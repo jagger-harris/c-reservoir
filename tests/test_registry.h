@@ -1,7 +1,7 @@
 #ifndef TEST_REGISTRY_H
 #define TEST_REGISTRY_H
 
-typedef void (*test_func_t)(void);
+typedef int (*test_func_t)(void);
 
 typedef struct test_entry_t {
   const char *name;

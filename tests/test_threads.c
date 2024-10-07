@@ -1,5 +1,5 @@
 #include "../include/rsv_threads.h"
-#include <assert.h>
+#include "test.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -21,7 +21,7 @@ void* increment_counter(void* arg) {
   return NULL;
 }
 
-void test_threads(void) {
+int test_threads(void) {
   rsv_thread_t thread1;
   rsv_thread_t thread2;
   shared_data_t data;
@@ -31,15 +31,16 @@ void test_threads(void) {
   rsv_mutex_create(&data.mutex);
 
   /* Test: Create threads */
-  assert(rsv_thread_create(&thread1, increment_counter, &data) == 0);
-  assert(rsv_thread_create(&thread2, increment_counter, &data) == 0);
+  TEST(rsv_thread_create(&thread1, increment_counter, &data) == 0);
+  TEST(rsv_thread_create(&thread2, increment_counter, &data) == 0);
 
   /* Test: join threads */
-  assert(rsv_thread_join(thread1, NULL) == 0);
-  assert(rsv_thread_join(thread2, NULL) == 0);
+  TEST(rsv_thread_join(thread1, NULL) == 0);
+  TEST(rsv_thread_join(thread2, NULL) == 0);
 
   /* Test: Counter value */
-  assert(data.counter == 2000);
-
+  TEST(data.counter == 2000);
   rsv_mutex_destroy(&data.mutex);
+
+  return 0;
 }
