@@ -13,7 +13,6 @@
 #define RSV_CONTAINERS_H
 
 #include "rsv_math.h"
-#include <math.h>
 #include <memory.h>
 #include <stdlib.h>
 
@@ -405,7 +404,7 @@ static void rsv_dynamic_array_push(rsv_dynamic_array_t* array,
 
   if (array->amount >= array->capacity) {
     array->capacity =
-        (size_t)ceil(array->capacity * RSV_DYNAMIC_ARRAY_GROWTH_AMOUNT);
+        (size_t)(array->capacity * RSV_DYNAMIC_ARRAY_GROWTH_AMOUNT + 1);
     array->data = realloc(array->data, array->capacity * array->element_size);
   }
 
