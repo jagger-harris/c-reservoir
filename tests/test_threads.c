@@ -3,9 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#if defined(_WIN32) || defined(_WIN64)
-
-#elif defined(__unix__)
+#if defined(__unix__)
 
 typedef struct shared_data_t {
   int counter;
@@ -49,6 +47,4 @@ int test_threads(void) {
   return 0;
 }
 
-#else
-#error "Unknown compiler"
 #endif
