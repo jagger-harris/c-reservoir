@@ -14,7 +14,10 @@ static int rsv_test_all(void) {
   failed_tests += test_hash_set();
   failed_tests += test_hash_table();
   failed_tests += test_rsv_strcpy();
+
+#if defined(__unix__)
   failed_tests += test_threads();
+#endif
 
   return failed_tests;
 }
