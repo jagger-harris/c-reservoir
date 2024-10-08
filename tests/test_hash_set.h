@@ -1,3 +1,6 @@
+#ifndef TEST_HASH_SET_H
+#define TEST_HASH_SET_H
+
 #include "../include/rsv_containers.h"
 #include "test.h"
 #include <stdio.h>
@@ -61,3 +64,6 @@ int test_hash_set(void) {
   rsv_hash_set_destroy(&hash_set);
   return 0;
 }
+
+
+#endif /* TEST_HASH_SET_H */

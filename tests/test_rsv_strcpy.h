@@ -1,3 +1,6 @@
+#ifndef TEST_RSV_STRCPY_H
+#define TEST_RSV_STRCPY_H
+
 #include "../include/rsv_safe.h"
 #include "test.h"
 #include <stdio.h>
@@ -42,3 +45,5 @@ int test_rsv_strcpy(void) {
   
   return 0;
 }
+
+#endif /* TEST_RSV_STRCPY_H */

@@ -1,3 +1,6 @@
+#ifndef TEST_THREADS_H
+#define TEST_THREADS_H
+
 #include "../include/rsv_threads.h"
 #include "test.h"
 #include <stdio.h>
@@ -48,3 +51,5 @@ int test_threads(void) {
 }
 
 #endif
+
+#endif /* TEST_THREADS_H */

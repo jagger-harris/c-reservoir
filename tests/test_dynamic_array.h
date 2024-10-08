@@ -1,3 +1,6 @@
+#ifndef TEST_DYNAMIC_ARRAY_H
+#define TEST_DYNAMIC_ARRAY_H
+
 #include "../include/rsv_containers.h"
 #include "test.h"
 #include <stdio.h>
@@ -46,3 +49,5 @@ int test_dynamic_array(void) {
   rsv_dynamic_array_destroy(&array);
   return 0;
 }
+
+#endif /* TEST_DYNAMIC_ARRAY_H */

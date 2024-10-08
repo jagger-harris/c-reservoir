@@ -1,3 +1,6 @@
+#ifndef TEST_HASH_TABLE_H
+#define TEST_HASH_TABLE_H
+
 #include "../include/rsv_containers.h"
 #include "../include/rsv_safe.h"
 #include "test.h"
@@ -10,7 +13,8 @@ int test_hash_table(void) {
   rsv_hash_table_t hash_table;
 
   /* Test: Create hash table */
-  hash_table = rsv_hash_table_create(2, sizeof(test_key), sizeof(int), NULL, NULL);
+  hash_table =
+      rsv_hash_table_create(2, sizeof(test_key), sizeof(int), NULL, NULL);
   TEST(hash_table.amount == 0);
   TEST(hash_table.capacity == 2);
 
@@ -50,3 +54,5 @@ int test_hash_table(void) {
   rsv_hash_table_destroy(&hash_table);
   return 0;
 }
+
+#endif /* TEST_HASH_TABLE_H */
