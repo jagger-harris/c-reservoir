@@ -4,7 +4,7 @@ Reservoir C Library is a header only C library that contains many useful data st
 
 It is currently a work-in-progress.
 
-Requires git and CMake 3.0 or later to build.
+Requires git and CMake >=3.0 to build.
 
 ## Documentation
 
@@ -12,7 +12,7 @@ You can read the documentation [here](https://jagger-harris.github.io/reservoir/
 
 ## Dependencies
 
-- CMake 3.0 or greater
+- CMake >=3.0
 - C99 compiler
 
 ## Testing
@@ -21,7 +21,7 @@ Clone the repository:
 
 ```shell
 git clone https://github.com/jagger-harris/reservoir.git
-cd c-reservoir
+cd reservoir
 ```
 
 Using provided test script:
