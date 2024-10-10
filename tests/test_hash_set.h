@@ -1,13 +1,13 @@
 #ifndef TEST_HASH_SET_H
 #define TEST_HASH_SET_H
 
-#include "../include/rsv_containers.h"
+#include "../include/containers/rsv_hash_set.h"
 #include "test.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-int test_hash_set(void) {
+static inline int test_hash_set(void) {
   int test_int;
   int* test_key;
   rsv_hash_set_t hash_set;

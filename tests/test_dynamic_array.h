@@ -1,12 +1,12 @@
 #ifndef TEST_DYNAMIC_ARRAY_H
 #define TEST_DYNAMIC_ARRAY_H
 
-#include "../include/rsv_containers.h"
+#include "../include/containers/rsv_dynamic_array.h"
 #include "test.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-int test_dynamic_array(void) {
+static inline int test_dynamic_array(void) {
   int test_int;
   rsv_dynamic_array_t array;
 

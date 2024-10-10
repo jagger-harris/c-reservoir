@@ -1,13 +1,13 @@
 #ifndef TEST_HASH_TABLE_H
 #define TEST_HASH_TABLE_H
 
-#include "../include/rsv_containers.h"
-#include "../include/rsv_safe.h"
+#include "../include/containers/rsv_hash_table.h"
+#include "../include/safe/rsv_string.h"
 #include "test.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-int test_hash_table(void) {
+static inline int test_hash_table(void) {
   int test_int;
   char test_key[16];
   rsv_hash_table_t hash_table;

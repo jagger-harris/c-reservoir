@@ -7,7 +7,7 @@
 #include "test_rsv_strcpy.h"
 #include "test_threads.h"
 
-static int rsv_test_all(void) {
+static inline int rsv_test_all(void) {
   int failed_tests = 0;
 
   failed_tests += test_dynamic_array();

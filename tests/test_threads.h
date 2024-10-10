@@ -1,19 +1,19 @@
+#if defined(__unix__)
+
 #ifndef TEST_THREADS_H
 #define TEST_THREADS_H
 
-#include "../include/rsv_threads.h"
+#include "../include/threads/rsv_threads_pthreads.h"
 #include "test.h"
 #include <stdio.h>
 #include <stdlib.h>
-
-#if defined(__unix__)
 
 typedef struct shared_data_t {
   int counter;
   rsv_mutex_t mutex;
 } shared_data_t;
 
-void* increment_counter(void* arg) {
+static inline void* increment_counter(void* arg) {
   shared_data_t* data = (shared_data_t*)arg;
   int i;
 
@@ -26,7 +26,7 @@ void* increment_counter(void* arg) {
   return NULL;
 }
 
-int test_threads(void) {
+static inline int test_threads(void) {
   rsv_thread_t thread1;
   rsv_thread_t thread2;
   shared_data_t data;
@@ -50,6 +50,6 @@ int test_threads(void) {
   return 0;
 }
 
-#endif
-
 #endif /* TEST_THREADS_H */
+
+#endif
