@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Reservoir C Library: include/containers/rsv_hash_table.h File Reference</title>
+<title>Reservoir C Library: include/rsv/containers/hash_table.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,7 +64,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('rsv__hash__table_8h.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('hash__table_8h.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -95,13 +95,13 @@ $(document).ready(function(){initNavTree('rsv__hash__table_8h.html',''); initRes
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">rsv_hash_table.h File Reference</div></div>
+  <div class="headertitle"><div class="title">hash_table.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="string_8h_source.html">string.h</a>&gt;</code><br />
 </div>
-<p><a href="rsv__hash__table_8h_source.html">Go to the source code of this file.</a></p>
+<p><a href="hash__table_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -114,42 +114,42 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a3e03cb40c6dc5e1b931af6a5701c9f17"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rsv__hash__table_8h.html#a3e03cb40c6dc5e1b931af6a5701c9f17">RSV_HASH_TABLE_LOAD_FACTOR</a>&#160;&#160;&#160;0.75</td></tr>
+<tr class="memitem:a3e03cb40c6dc5e1b931af6a5701c9f17"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash__table_8h.html#a3e03cb40c6dc5e1b931af6a5701c9f17">RSV_HASH_TABLE_LOAD_FACTOR</a>&#160;&#160;&#160;0.75</td></tr>
 <tr class="separator:a3e03cb40c6dc5e1b931af6a5701c9f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a0c7d4d7ed8cc96fcb9e792f064fca6f4"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structrsv__hash__table__entry__t.html">rsv_hash_table_entry_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rsv__hash__table_8h.html#a0c7d4d7ed8cc96fcb9e792f064fca6f4">rsv_hash_table_entry_t</a></td></tr>
+<tr class="memitem:a0c7d4d7ed8cc96fcb9e792f064fca6f4"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structrsv__hash__table__entry__t.html">rsv_hash_table_entry_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash__table_8h.html#a0c7d4d7ed8cc96fcb9e792f064fca6f4">rsv_hash_table_entry_t</a></td></tr>
 <tr class="memdesc:a0c7d4d7ed8cc96fcb9e792f064fca6f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">A hash table entry. Should not be directly used unless necessary.  <br /></td></tr>
 <tr class="separator:a0c7d4d7ed8cc96fcb9e792f064fca6f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf2adead1cddef3ec4930fb7e429e192"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structrsv__hash__table__t.html">rsv_hash_table_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rsv__hash__table_8h.html#aaf2adead1cddef3ec4930fb7e429e192">rsv_hash_table_t</a></td></tr>
+<tr class="memitem:aaf2adead1cddef3ec4930fb7e429e192"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structrsv__hash__table__t.html">rsv_hash_table_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash__table_8h.html#aaf2adead1cddef3ec4930fb7e429e192">rsv_hash_table_t</a></td></tr>
 <tr class="memdesc:aaf2adead1cddef3ec4930fb7e429e192"><td class="mdescLeft">&#160;</td><td class="mdescRight">A hash table which automatically resizes and can take any type. Make sure to cast your type from the void pointer.  <br /></td></tr>
 <tr class="separator:aaf2adead1cddef3ec4930fb7e429e192"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a972a29a7aba395b52c848c6fb009557d"><td class="memItemLeft" align="right" valign="top">static unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rsv__hash__table_8h.html#a972a29a7aba395b52c848c6fb009557d">rsv_hash_table_hash</a> (const void *data, unsigned int element_size)</td></tr>
+<tr class="memitem:a972a29a7aba395b52c848c6fb009557d"><td class="memItemLeft" align="right" valign="top">static unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash__table_8h.html#a972a29a7aba395b52c848c6fb009557d">rsv_hash_table_hash</a> (const void *data, unsigned int element_size)</td></tr>
 <tr class="memdesc:a972a29a7aba395b52c848c6fb009557d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a hash for the given data.  <br /></td></tr>
 <tr class="separator:a972a29a7aba395b52c848c6fb009557d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93ece5604f325f29577a3f27ffc29600"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rsv__hash__table_8h.html#a93ece5604f325f29577a3f27ffc29600">rsv_hash_table_compare</a> (const void *data_a, const void *data_b, unsigned int element_size)</td></tr>
+<tr class="memitem:a93ece5604f325f29577a3f27ffc29600"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash__table_8h.html#a93ece5604f325f29577a3f27ffc29600">rsv_hash_table_compare</a> (const void *data_a, const void *data_b, unsigned int element_size)</td></tr>
 <tr class="memdesc:a93ece5604f325f29577a3f27ffc29600"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two pieces of hash table data.  <br /></td></tr>
 <tr class="separator:a93ece5604f325f29577a3f27ffc29600"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2dad6979d3c5ebb024bdba85dd5a31e6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structrsv__hash__table__t.html">rsv_hash_table_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rsv__hash__table_8h.html#a2dad6979d3c5ebb024bdba85dd5a31e6">rsv_hash_table_create</a> (unsigned int capacity, unsigned int key_size, unsigned int value_size, unsigned int(*custom_hash_func)(const void *, unsigned int), int(*custom_compare_func)(const void *, const void *, unsigned int))</td></tr>
+<tr class="memitem:a2dad6979d3c5ebb024bdba85dd5a31e6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structrsv__hash__table__t.html">rsv_hash_table_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash__table_8h.html#a2dad6979d3c5ebb024bdba85dd5a31e6">rsv_hash_table_create</a> (unsigned int capacity, unsigned int key_size, unsigned int value_size, unsigned int(*custom_hash_func)(const void *, unsigned int), int(*custom_compare_func)(const void *, const void *, unsigned int))</td></tr>
 <tr class="memdesc:a2dad6979d3c5ebb024bdba85dd5a31e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a hash table.  <br /></td></tr>
 <tr class="separator:a2dad6979d3c5ebb024bdba85dd5a31e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36b15e55a4a86ad3abafa9b34c3b7a33"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rsv__hash__table_8h.html#a36b15e55a4a86ad3abafa9b34c3b7a33">rsv_hash_table_destroy</a> (<a class="el" href="structrsv__hash__table__t.html">rsv_hash_table_t</a> *hash_table)</td></tr>
+<tr class="memitem:a36b15e55a4a86ad3abafa9b34c3b7a33"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash__table_8h.html#a36b15e55a4a86ad3abafa9b34c3b7a33">rsv_hash_table_destroy</a> (<a class="el" href="structrsv__hash__table__t.html">rsv_hash_table_t</a> *hash_table)</td></tr>
 <tr class="memdesc:a36b15e55a4a86ad3abafa9b34c3b7a33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys a hash table, freeing all associated memory.  <br /></td></tr>
 <tr class="separator:a36b15e55a4a86ad3abafa9b34c3b7a33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab88cf901387cf87b6a8b807ce1dad172"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rsv__hash__table_8h.html#ab88cf901387cf87b6a8b807ce1dad172">rsv_hash_table_resize</a> (<a class="el" href="structrsv__hash__table__t.html">rsv_hash_table_t</a> *hash_table, unsigned int new_capacity)</td></tr>
+<tr class="memitem:ab88cf901387cf87b6a8b807ce1dad172"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash__table_8h.html#ab88cf901387cf87b6a8b807ce1dad172">rsv_hash_table_resize</a> (<a class="el" href="structrsv__hash__table__t.html">rsv_hash_table_t</a> *hash_table, unsigned int new_capacity)</td></tr>
 <tr class="memdesc:ab88cf901387cf87b6a8b807ce1dad172"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resizes a hash table to the new specified capacity.  <br /></td></tr>
 <tr class="separator:ab88cf901387cf87b6a8b807ce1dad172"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a439314a7cf239ab9ceea86f79af6dfa9"><td class="memItemLeft" align="right" valign="top">static void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rsv__hash__table_8h.html#a439314a7cf239ab9ceea86f79af6dfa9">rsv_hash_table_get</a> (<a class="el" href="structrsv__hash__table__t.html">rsv_hash_table_t</a> *hash_table, const void *key)</td></tr>
+<tr class="memitem:a439314a7cf239ab9ceea86f79af6dfa9"><td class="memItemLeft" align="right" valign="top">static void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash__table_8h.html#a439314a7cf239ab9ceea86f79af6dfa9">rsv_hash_table_get</a> (<a class="el" href="structrsv__hash__table__t.html">rsv_hash_table_t</a> *hash_table, const void *key)</td></tr>
 <tr class="memdesc:a439314a7cf239ab9ceea86f79af6dfa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the value associated with the specified key in the hash table.  <br /></td></tr>
 <tr class="separator:a439314a7cf239ab9ceea86f79af6dfa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b9c8a8d2a7fb55d923c9d593aba6433"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rsv__hash__table_8h.html#a1b9c8a8d2a7fb55d923c9d593aba6433">rsv_hash_table_push</a> (<a class="el" href="structrsv__hash__table__t.html">rsv_hash_table_t</a> *hash_table, const void *key, const void *value)</td></tr>
+<tr class="memitem:a1b9c8a8d2a7fb55d923c9d593aba6433"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash__table_8h.html#a1b9c8a8d2a7fb55d923c9d593aba6433">rsv_hash_table_push</a> (<a class="el" href="structrsv__hash__table__t.html">rsv_hash_table_t</a> *hash_table, const void *key, const void *value)</td></tr>
 <tr class="memdesc:a1b9c8a8d2a7fb55d923c9d593aba6433"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a key-value pair to the hash table.  <br /></td></tr>
 <tr class="separator:a1b9c8a8d2a7fb55d923c9d593aba6433"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b78bd30f3630810fa693d7b286388a7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rsv__hash__table_8h.html#a6b78bd30f3630810fa693d7b286388a7">rsv_hash_table_pop</a> (<a class="el" href="structrsv__hash__table__t.html">rsv_hash_table_t</a> *hash_table, const void *key)</td></tr>
+<tr class="memitem:a6b78bd30f3630810fa693d7b286388a7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash__table_8h.html#a6b78bd30f3630810fa693d7b286388a7">rsv_hash_table_pop</a> (<a class="el" href="structrsv__hash__table__t.html">rsv_hash_table_t</a> *hash_table, const void *key)</td></tr>
 <tr class="memdesc:a6b78bd30f3630810fa693d7b286388a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a key-value pair from the hash table.  <br /></td></tr>
 <tr class="separator:a6b78bd30f3630810fa693d7b286388a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -595,7 +595,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_c35e9bb330ad51bde60aaf7a3563beec.html">containers</a></li><li class="navelem"><a class="el" href="rsv__hash__table_8h.html">rsv_hash_table.h</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_928a9c241a52afef06ea7d2e2eebc209.html">rsv</a></li><li class="navelem"><a class="el" href="dir_6375df875e783f02e8c34d12251687b1.html">containers</a></li><li class="navelem"><a class="el" href="hash__table_8h.html">hash_table.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>

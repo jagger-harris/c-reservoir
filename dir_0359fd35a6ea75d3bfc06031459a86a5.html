@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Reservoir C Library: include/safe/rsv_string.h File Reference</title>
+<title>Reservoir C Library: include/rsv/safe Directory Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,7 +64,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('rsv__string_8h.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('dir_0359fd35a6ea75d3bfc06031459a86a5.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -90,82 +90,21 @@ $(document).ready(function(){initNavTree('rsv__string_8h.html',''); initResizabl
 </div>
 
 <div class="header">
-  <div class="summary">
-<a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">rsv_string.h File Reference</div></div>
+  <div class="headertitle"><div class="title">safe Directory Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;string.h&gt;</code><br />
-</div>
-<p><a href="rsv__string_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a67ec709de814e98dd77c283208e08b56"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rsv__string_8h.html#a67ec709de814e98dd77c283208e08b56">rsv_strcpy</a> (char *destination, const char *source, size_t destination_size)</td></tr>
-<tr class="memdesc:a67ec709de814e98dd77c283208e08b56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies a string from the source to the destination with size limitation.  <br /></td></tr>
-<tr class="separator:a67ec709de814e98dd77c283208e08b56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="files" name="files"></a>
+Files</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string_8h.html">string.h</a> <a href="string_8h_source.html">[code]</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a67ec709de814e98dd77c283208e08b56" name="a67ec709de814e98dd77c283208e08b56"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67ec709de814e98dd77c283208e08b56">&#9670;&#160;</a></span>rsv_strcpy()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void rsv_strcpy </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>destination</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>source</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>destination_size</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Copies a string from the source to the destination with size limitation. </p>
-<p>This function copies the string from the source to the destination ensuring that it does not exceed the given destination size. If the source string is longer than the destination size, it will be truncated to fit.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">destination</td><td>A pointer to the destination buffer where the string will be copied. </td></tr>
-    <tr><td class="paramname">source</td><td>A pointer to the source string that will be copied. </td></tr>
-    <tr><td class="paramname">destination_size</td><td>The size of the destination buffer, which limits the number of characters copied. It ensures no buffer overflow.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>The destination string will be null-terminated if there is space in the destination buffer, but if the source is too long, the string will be truncated and properly terminated. </dd></dl>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_de4def3d9d6a6b49156ea6b02484b687.html">safe</a></li><li class="navelem"><a class="el" href="rsv__string_8h.html">rsv_string.h</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_928a9c241a52afef06ea7d2e2eebc209.html">rsv</a></li><li class="navelem"><a class="el" href="dir_0359fd35a6ea75d3bfc06031459a86a5.html">safe</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>

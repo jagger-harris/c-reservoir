@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Reservoir C Library: include/containers/rsv_dynamic_array.h File Reference</title>
+<title>Reservoir C Library: include/rsv/containers/dynamic_array.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,7 +64,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('rsv__dynamic__array_8h.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('dynamic__array_8h.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -95,13 +95,13 @@ $(document).ready(function(){initNavTree('rsv__dynamic__array_8h.html',''); init
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">rsv_dynamic_array.h File Reference</div></div>
+  <div class="headertitle"><div class="title">dynamic_array.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="string_8h_source.html">string.h</a>&gt;</code><br />
 </div>
-<p><a href="rsv__dynamic__array_8h_source.html">Go to the source code of this file.</a></p>
+<p><a href="dynamic__array_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -111,30 +111,30 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a5e7444a647c508140c432e3b4017c549"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rsv__dynamic__array_8h.html#a5e7444a647c508140c432e3b4017c549">RSV_DYNAMIC_ARRAY_GROWTH_AMOUNT</a>&#160;&#160;&#160;1.61803398874989484820</td></tr>
+<tr class="memitem:a5e7444a647c508140c432e3b4017c549"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dynamic__array_8h.html#a5e7444a647c508140c432e3b4017c549">RSV_DYNAMIC_ARRAY_GROWTH_AMOUNT</a>&#160;&#160;&#160;1.61803398874989484820</td></tr>
 <tr class="separator:a5e7444a647c508140c432e3b4017c549"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a9fb3ea7e77c12bc73f83929cb91a4faf"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structrsv__dynamic__array__t.html">rsv_dynamic_array_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rsv__dynamic__array_8h.html#a9fb3ea7e77c12bc73f83929cb91a4faf">rsv_dynamic_array_t</a></td></tr>
+<tr class="memitem:a9fb3ea7e77c12bc73f83929cb91a4faf"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structrsv__dynamic__array__t.html">rsv_dynamic_array_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dynamic__array_8h.html#a9fb3ea7e77c12bc73f83929cb91a4faf">rsv_dynamic_array_t</a></td></tr>
 <tr class="memdesc:a9fb3ea7e77c12bc73f83929cb91a4faf"><td class="mdescLeft">&#160;</td><td class="mdescRight">A dynamic array which automatically resizes and can take any type. Make sure to cast your type from the void pointer.  <br /></td></tr>
 <tr class="separator:a9fb3ea7e77c12bc73f83929cb91a4faf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a4f6d300327e274c9d69ca55dab91507c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structrsv__dynamic__array__t.html">rsv_dynamic_array_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rsv__dynamic__array_8h.html#a4f6d300327e274c9d69ca55dab91507c">rsv_dynamic_array_create</a> (unsigned int capacity, unsigned int element_size)</td></tr>
+<tr class="memitem:a4f6d300327e274c9d69ca55dab91507c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structrsv__dynamic__array__t.html">rsv_dynamic_array_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dynamic__array_8h.html#a4f6d300327e274c9d69ca55dab91507c">rsv_dynamic_array_create</a> (unsigned int capacity, unsigned int element_size)</td></tr>
 <tr class="memdesc:a4f6d300327e274c9d69ca55dab91507c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a dynamic array.  <br /></td></tr>
 <tr class="separator:a4f6d300327e274c9d69ca55dab91507c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cc4f9d4abc10fdcf2ef75178ec08d5b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rsv__dynamic__array_8h.html#a0cc4f9d4abc10fdcf2ef75178ec08d5b">rsv_dynamic_array_destroy</a> (<a class="el" href="structrsv__dynamic__array__t.html">rsv_dynamic_array_t</a> *array)</td></tr>
+<tr class="memitem:a0cc4f9d4abc10fdcf2ef75178ec08d5b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dynamic__array_8h.html#a0cc4f9d4abc10fdcf2ef75178ec08d5b">rsv_dynamic_array_destroy</a> (<a class="el" href="structrsv__dynamic__array__t.html">rsv_dynamic_array_t</a> *array)</td></tr>
 <tr class="memdesc:a0cc4f9d4abc10fdcf2ef75178ec08d5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys a dynamic array, freeing all associated memory.  <br /></td></tr>
 <tr class="separator:a0cc4f9d4abc10fdcf2ef75178ec08d5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b17a741d97390644b6a19f21a983066"><td class="memItemLeft" align="right" valign="top">static void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rsv__dynamic__array_8h.html#a0b17a741d97390644b6a19f21a983066">rsv_dynamic_array_get</a> (<a class="el" href="structrsv__dynamic__array__t.html">rsv_dynamic_array_t</a> *array, unsigned int index)</td></tr>
+<tr class="memitem:a0b17a741d97390644b6a19f21a983066"><td class="memItemLeft" align="right" valign="top">static void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dynamic__array_8h.html#a0b17a741d97390644b6a19f21a983066">rsv_dynamic_array_get</a> (<a class="el" href="structrsv__dynamic__array__t.html">rsv_dynamic_array_t</a> *array, unsigned int index)</td></tr>
 <tr class="memdesc:a0b17a741d97390644b6a19f21a983066"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the element at the specified index in the dynamic array.  <br /></td></tr>
 <tr class="separator:a0b17a741d97390644b6a19f21a983066"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64b9468dc7cbc725941c8983d83ee138"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rsv__dynamic__array_8h.html#a64b9468dc7cbc725941c8983d83ee138">rsv_dynamic_array_push</a> (<a class="el" href="structrsv__dynamic__array__t.html">rsv_dynamic_array_t</a> *array, const void *element)</td></tr>
+<tr class="memitem:a64b9468dc7cbc725941c8983d83ee138"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dynamic__array_8h.html#a64b9468dc7cbc725941c8983d83ee138">rsv_dynamic_array_push</a> (<a class="el" href="structrsv__dynamic__array__t.html">rsv_dynamic_array_t</a> *array, const void *element)</td></tr>
 <tr class="memdesc:a64b9468dc7cbc725941c8983d83ee138"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an element to the end of the dynamic array.  <br /></td></tr>
 <tr class="separator:a64b9468dc7cbc725941c8983d83ee138"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82259ac8a99c65bc798486a0fb89bf8f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rsv__dynamic__array_8h.html#a82259ac8a99c65bc798486a0fb89bf8f">rsv_dynamic_array_pop</a> (<a class="el" href="structrsv__dynamic__array__t.html">rsv_dynamic_array_t</a> *array)</td></tr>
+<tr class="memitem:a82259ac8a99c65bc798486a0fb89bf8f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dynamic__array_8h.html#a82259ac8a99c65bc798486a0fb89bf8f">rsv_dynamic_array_pop</a> (<a class="el" href="structrsv__dynamic__array__t.html">rsv_dynamic_array_t</a> *array)</td></tr>
 <tr class="memdesc:a82259ac8a99c65bc798486a0fb89bf8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the last element from the dynamic array.  <br /></td></tr>
 <tr class="separator:a82259ac8a99c65bc798486a0fb89bf8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -381,7 +381,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_c35e9bb330ad51bde60aaf7a3563beec.html">containers</a></li><li class="navelem"><a class="el" href="rsv__dynamic__array_8h.html">rsv_dynamic_array.h</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_928a9c241a52afef06ea7d2e2eebc209.html">rsv</a></li><li class="navelem"><a class="el" href="dir_6375df875e783f02e8c34d12251687b1.html">containers</a></li><li class="navelem"><a class="el" href="dynamic__array_8h.html">dynamic_array.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
