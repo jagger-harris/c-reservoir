@@ -1,12 +1,9 @@
 /*
-  rsv_hash_set.h
-  Reservoir implementation of a hash set
+  hash_set.h
+  Implementation of a hash set
 
-  C Reservoir Library
+  Reservoir Library
   MIT License - https://choosealicense.com/licenses/mit/
-
-  Contributors:
-    Jagger Harris
 */
 
 #ifndef RSV_HASH_SET_H

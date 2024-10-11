@@ -1,12 +1,9 @@
 /*
-  rsv_threads_pthreads.h
+  threads_pthreads.h
   Contains wrappers for pthreads api
 
-  C Reservoir Library
+  Reservoir Library
   MIT License - https://choosealicense.com/licenses/mit/
-
-  Contributors:
-    Jagger Harris
 */
 
 #if defined(__unix__)

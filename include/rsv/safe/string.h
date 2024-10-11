@@ -1,12 +1,9 @@
 /*
-  rsv_string.h
-  Reservoir safe implementation of standard string.h
+  string.h
+  Safe implementations of standard string.h
 
-  C Reservoir Library
+  Reservoir Library
   MIT License - https://choosealicense.com/licenses/mit/
-
-  Contributors:
-    Jagger Harris
 */
 
 #ifndef RSV_STRCPY_H

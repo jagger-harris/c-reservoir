@@ -4,7 +4,7 @@
 #include "test_dynamic_array.h"
 #include "test_hash_set.h"
 #include "test_hash_table.h"
-#include "test_rsv_strcpy.h"
+#include "test_string.h"
 #include "test_threads.h"
 
 static inline int rsv_test_all(void) {
@@ -13,7 +13,7 @@ static inline int rsv_test_all(void) {
   failed_tests += test_dynamic_array();
   failed_tests += test_hash_set();
   failed_tests += test_hash_table();
-  failed_tests += test_rsv_strcpy();
+  failed_tests += test_string();
 
 #if defined(__unix__)
   failed_tests += test_threads();

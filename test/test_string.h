@@ -1,13 +1,13 @@
 #ifndef TEST_RSV_STRCPY_H
 #define TEST_RSV_STRCPY_H
 
-#include "../include/safe/rsv_string.h"
 #include "test.h"
+#include <rsv/safe/string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-static inline int test_rsv_strcpy(void) {
+static inline int test_string(void) {
   char dest[10];
 
   /* Test: Normal copy */

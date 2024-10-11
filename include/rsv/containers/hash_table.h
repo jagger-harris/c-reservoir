@@ -1,12 +1,9 @@
 /*
-  rsv_hash_table.h
-  Reservoir implementation of a hash table
+  hash_table.h
+  Implementation of a hash table
 
-  C Reservoir Library
+  Reservoir Library
   MIT License - https://choosealicense.com/licenses/mit/
-
-  Contributors:
-    Jagger Harris
 */
 
 #ifndef RSV_HASH_TABLE_H

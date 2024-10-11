@@ -3,8 +3,8 @@
 #ifndef TEST_THREADS_H
 #define TEST_THREADS_H
 
-#include "../include/threads/rsv_threads_pthreads.h"
 #include "test.h"
+#include <rsv/threads/threads_pthreads.h>
 #include <stdio.h>
 #include <stdlib.h>
 

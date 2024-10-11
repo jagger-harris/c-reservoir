@@ -1,8 +1,8 @@
 #ifndef TEST_DYNAMIC_ARRAY_H
 #define TEST_DYNAMIC_ARRAY_H
 
-#include "../include/containers/rsv_dynamic_array.h"
 #include "test.h"
+#include <rsv/containers/dynamic_array.h>
 #include <stdio.h>
 #include <stdlib.h>
 

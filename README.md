@@ -1,6 +1,6 @@
-# Reservoir C Library
+# Reservoir library
 
-Reservoir C Library is a header only C library that contains many useful data structures, safe file management, and so on. It is written in C99, with minimal dependencies. The goal is to make C safe and easy to use.
+Reservoir library is a header-only C library that contains many useful data structures, safe file management, and so on. It is written in C99, with minimal dependencies. The goal is to make C safe and easy to use.
 
 It is currently a work-in-progress.
 

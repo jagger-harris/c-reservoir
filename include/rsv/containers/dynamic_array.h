@@ -1,12 +1,9 @@
 /*
-  rsv_dynamic_array.h
-  Reservoir implementation of a dynamic array
+  dynamic_array.h
+  Implementation of a dynamic array
 
-  C Reservoir Library
+  Reservoir Library
   MIT License - https://choosealicense.com/licenses/mit/
-
-  Contributors:
-    Jagger Harris
 */
 
 #ifndef RSV_DYNAMIC_ARRAY_H

@@ -1,9 +1,9 @@
 #ifndef TEST_HASH_TABLE_H
 #define TEST_HASH_TABLE_H
 
-#include "../include/containers/rsv_hash_table.h"
-#include "../include/safe/rsv_string.h"
 #include "test.h"
+#include <rsv/containers/hash_table.h>
+#include <rsv/safe/string.h>
 #include <stdio.h>
 #include <stdlib.h>
 
